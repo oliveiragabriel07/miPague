@@ -1,0 +1,86 @@
+/*
+ * clear styles
+ */
+ 
+* {
+	margin: 0;
+	padding:0;
+}
+
+li {
+	list-style: none;
+}
+
+body, html {
+	font: 12px Arial, Helvetica, sans-serif;
+}
+
+.wrapper {
+	min-width:950px;
+	clear:both;
+}
+
+.header {
+	width:920px;
+	margin:0 auto;
+	height:90px;
+	background: url('../images/bg-header.png') no-repeat 0 bottom transparent;
+}
+
+.header .section{
+	display: inline-block;
+	width:100%;
+}
+
+.header .logo, .header .logo a {
+	display:block;
+	height:60px;
+	width:250px;
+}
+
+.header .logo {
+	float: left;
+	background:url(../images/mipague-logo.png) no-repeat transparent;
+	margin-top:10px
+}
+
+.header .logo a {
+	text-indent: -9999px;
+	overflow: hidden;
+    color: #484848;
+	font-size: 12px;
+	outline: medium none;
+	text-decoration: none;
+}
+
+.header .menu {
+	float: right;
+	margin-top: 30px;
+}
+
+.header .menu li {
+	float: left;
+}
+
+a.white-button{
+	text-align: center;
+	width: 100px;
+	color: #0669DE;
+	font-size:11px;
+	font-weight: bold;
+	border:1px solid #E8E8E8;
+	margin: 0 5px;
+	padding:8px 10px 6px;
+	cursor: pointer;
+	border-radius:3px;
+	background: url('../images/white-button.png') repeat-x #FFFFFF;
+	text-decoration: none;
+}
+
+a.white-button:hover{
+	text-decoration: underline;
+}
+
+.white-button:hover{
+	text-decoration: underline;
+}	
