@@ -12,7 +12,25 @@ li {
 }
 
 body, html {
-	font: 12px Arial, Helvetica, sans-serif;
+	font: 13px Arial, Helvetica, sans-serif;
+	height: 100%;
+	overflow: hidden;
+}
+
+h2 {
+	font-size: 18px;
+	color: #666666;
+	margin-bottom: 20px;
+}
+
+h3 {
+	font-size: 16px;
+	font-weight: bold;
+}
+
+a {
+	color: #15C;
+	text-decoration: none;	
 }
 
 .wrapper {
@@ -20,16 +38,72 @@ body, html {
 	clear:both;
 }
 
+.section {
+	width: 950px;
+	margin: 0 auto;	
+}
+
 .header {
-	width:920px;
-	margin:0 auto;
 	height:90px;
 	background: url('../images/bg-header.png') no-repeat 0 bottom transparent;
 }
 
-.header .section{
+.content{
 	display: inline-block;
 	width:100%;
+}
+
+.body .content{
+	margin-top:30px;
+}
+
+.features li {
+	margin-bottom: 20px;
+}
+
+.sign-box {
+	width: 380px;
+	float: right;
+	padding: 10px 20px;
+	background-color: #F1F2F3;
+}
+
+.sign-box p {
+	margin: 0 0 20px;
+}
+
+.sign-box p input{
+	padding: 0 8px;
+	border: 1px solid #DCDCDC;
+	border-top-color: silver;
+	height: 32px;
+	width: 100%;
+	font-size: 16px;
+	color: #444444;
+	box-sizing: border-box;
+}
+
+.sign-box .login-button {
+	float: right;
+}
+
+.sign-box .keep-connected span {
+	padding-left: 8px;
+}
+
+.sign-box .keep-connected input,
+.sign-box .keep-connected span {
+	vertical-align: middle;
+}
+
+.sign-box .forgot-password {
+	margin: 10px 0 5px;
+	display: block;
+	clear: both;
+}
+
+.info {
+	margin-right: 480px;
 }
 
 .header .logo, .header .logo a {

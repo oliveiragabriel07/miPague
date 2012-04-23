@@ -1,4 +1,8 @@
 jQuery(function($){
+	$('#username').watermark('e-mail');
+	
+	$('#password').watermark('senha');
+	
 	$('#loginForm').validate({
 		debug: true,
 		rules: {

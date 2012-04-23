@@ -14,7 +14,7 @@ class Login extends CI_Controller {
 		if ($this->user->isLogged()) {
 			redirect('home');
 		} else {
-			$this->load->view('welcome_view.html');			
+			$this->load->view('login_view.html');			
 		}
 	}
 	
