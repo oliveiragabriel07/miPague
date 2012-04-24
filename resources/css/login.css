@@ -12,25 +12,36 @@ li {
 }
 
 body, html {
-	font: 13px Arial, Helvetica, sans-serif;
+	font: 14px Arial, Helvetica, sans-serif;
 	height: 100%;
-	overflow: hidden;
 }
 
 h2 {
-	font-size: 18px;
-	color: #666666;
+	font-size: 20px;
+	color: #908E8F;
 	margin-bottom: 20px;
 }
 
 h3 {
-	font-size: 16px;
+	font-size: 18px;
+	color: #B62A59;
+	font-weight: bold;
+}
+
+h4 {
+	font-size: 20px;
+	color: #FF6636;
 	font-weight: bold;
 }
 
 a {
 	color: #15C;
 	text-decoration: none;	
+}
+
+a:hover {
+	text-decoration: underline;
+	cursor: pointer;	
 }
 
 .wrapper {
@@ -58,14 +69,32 @@ a {
 }
 
 .features li {
-	margin-bottom: 20px;
+	margin: 10px 0 20px;
+	height: 60px;
+}
+
+.features li img {
+	float: left;
+	margin-top: -10px;
+}
+
+.features li h3{
+	margin-bottom: 5px;
+}
+
+.features li p,
+.features li h3{
+	margin-left: 100px;
 }
 
 .sign-box {
-	width: 380px;
+	width: 360px;
 	float: right;
-	padding: 10px 20px;
-	background-color: #F1F2F3;
+	padding: 15px 20px;
+	background-color: #E5E5E5;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;	
 }
 
 .sign-box p {
@@ -74,13 +103,14 @@ a {
 
 .sign-box p input{
 	padding: 0 8px;
-	border: 1px solid #DCDCDC;
-	border-top-color: silver;
+	border: 1px solid #C3BCBD;
 	height: 32px;
 	width: 100%;
 	font-size: 16px;
 	color: #444444;
-	box-sizing: border-box;
+   -moz-box-sizing: border-box;
+   -webkit-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 .sign-box .login-button {
@@ -102,8 +132,76 @@ a {
 	clear: both;
 }
 
+.sign-box .keep-connected {
+	height: 32px;
+	line-height: 32px;
+	color: #333;	
+}
+
 .info {
 	margin-right: 480px;
+}
+
+.operation {
+	margin: 40px 0;
+}
+
+.operation-steps {
+	display: inline-block;
+	width: 100%;
+}
+
+.operation-steps li {
+	text-align: center;
+	float: left;
+	height: 140px;
+	width: 236px;	
+	border-left: 1px dotted #CCC;
+}
+
+.operation-steps li.no-border {
+	border: none;
+}
+
+.operation-steps li img{
+	display: block;
+	margin: 0 auto 5px;
+}
+
+.operation-steps li span{
+	color: #FF6636;
+	display: block;
+	width: 210px;
+	margin: 0 auto;
+	font-weight: bold;
+}
+
+.operation .border-top-wrapper,
+.operation .border-bottom-wrapper {
+	clear: both;
+	height: 5px;
+	overflow: hidden;
+}
+
+.operation .border-top-wrapper {
+	margin: 15px 0 25px;
+}
+
+.operation .border-bottom-wrapper {
+	margin: 25px 0 30px;
+}
+
+.operation .orange-border {
+	border-color: #FF6636;
+	border-style: solid;
+	border-width: 0 0 0 100px;
+	width: 850px;
+}
+
+.operation span.border{
+	border-bottom: 1px solid #E8E8E8;
+	display: block;
+	height: 4px;
 }
 
 .header .logo, .header .logo a {
@@ -136,6 +234,49 @@ a {
 	float: left;
 }
 
+.mipague-button {
+	display: inline-block;
+	min-width: 46px;
+	text-align: center;
+	color: #444;
+	font: 11px Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	height: 28px;
+	padding: 0 10px;
+	line-height: 28px;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+	border: 1px solid #DCDCDC;
+	background-color: #F5F5F5;
+	background-image: -webkit-gradient(linear,left top,left bottom,from(#F5F5F5),to(#F1F1F1));
+	background-image: -webkit-linear-gradient(top,#F5F5F5,#F1F1F1);
+	background-image: -moz-linear-gradient(top,#F5F5F5,#F1F1F1);
+	background-image: -ms-linear-gradient(top,#F5F5F5,#F1F1F1);
+	background-image: -o-linear-gradient(top,#F5F5F5,#F1F1F1);
+	background-image: linear-gradient(top,#F5F5F5,#F1F1F1);
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	user-select: none;
+	cursor: pointer;	
+}
+
+.login-button{
+	width: 80px;
+	height: 32px;
+	line-height: 30px;
+	border: 1px solid #187DF8;
+	color: #FFF;
+	font-size: 14px;
+	background-color: #4EA0F3;
+	background-image: -webkit-gradient(linear,left top,left bottom,from(#4EA0F3),to(#187DF8));
+	background-image: -webkit-linear-gradient(top,4EA0F3,#187DF8);
+	background-image: -moz-linear-gradient(top,#4EA0F3,#187DF8);
+	background-image: -ms-linear-gradient(top,#4EA0F3,#187DF8);
+	background-image: -o-linear-gradient(top,#4EA0F3,#187DF8);
+	background-image: linear-gradient(top,#4EA0F3,#187DF8);	
+}
+
 a.white-button{
 	text-align: center;
 	width: 100px;
@@ -151,10 +292,8 @@ a.white-button{
 	text-decoration: none;
 }
 
-a.white-button:hover{
+a.white-button:hover,
+.white-button:hover
+{
 	text-decoration: underline;
 }
-
-.white-button:hover{
-	text-decoration: underline;
-}	
