@@ -7,6 +7,11 @@
 	padding:0;
 }
 
+*:focus  
+{  
+    outline: none;  
+} 
+
 li {
 	list-style: none;
 }
@@ -97,20 +102,8 @@ a:hover {
 	border-radius: 5px;	
 }
 
-.sign-box p {
+.sign-box div {
 	margin: 0 0 20px;
-}
-
-.sign-box p input{
-	padding: 0 8px;
-	border: 1px solid #C3BCBD;
-	height: 32px;
-	width: 100%;
-	font-size: 16px;
-	color: #444444;
-   -moz-box-sizing: border-box;
-   -webkit-box-sizing: border-box;
-    box-sizing: border-box;
 }
 
 .sign-box .login-button {
@@ -296,4 +289,42 @@ a.white-button:hover,
 .white-button:hover
 {
 	text-decoration: underline;
+}
+
+/*
+ * Style
+ */
+
+.watermark {
+	color: #686868 !important;
+}
+
+input.mipague-textfield {
+	padding: 0 8px;
+	border: 1px solid #C3BCBD;
+	height: 32px;
+	width: 100%;
+	font-size: 16px;
+	color: #444444;
+   -moz-box-sizing: border-box;
+   -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+input.mipague-textfield:focus {
+	border-color: #6495ED;
+	box-shadow: 0 0 5px #6495ED;
+}
+
+input.error {
+	border-color: #DC143C !important;
+	background-color: #FFEAEA !important;
+	box-shadow: none !important;
+}
+
+label.error {
+	color: #DC143C;
+	display: block;
+	margin-top: 3px;
+	font-size: 13px;
 }

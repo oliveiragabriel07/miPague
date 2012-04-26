@@ -10,6 +10,7 @@
 	<script type="text/javascript" src="../jquery/jquery.js"></script>
 	<script type="text/javascript" src="../jquery/jquery.validate.js"></script>
 	<script type="text/javascript" src="../jquery/jquery.watermark.js"></script>
+	<script type="text/javascript" src="../jquery/overrides/validate.js"></script>
 	<script type="text/javascript" src="../resources/jscripts/login.js"></script>
 	
 	<title>miPague</title>
@@ -37,12 +38,12 @@
 				<div class="sign-box">
 					<form id="loginForm">
 						<h2>Login</h2>
-						<p>
-							<input type="text" name="username" id="username"></input>
-						</p>
-						<p>
-							<input type="password" name="password" id="password"></input>
-						</p>
+						<div class="username-p">
+							<input class="mipague-textfield" type="text" name="username" id="username"></input>
+						</div>
+						<div class="pass-p">
+							<input class="mipague-textfield" type="password" name="password" id="password"></input>
+						</div>
 						<input class="mipague-button login-button" type="submit" value="Login" id="login"></input>
 						<label class="keep-connected">
 							<input type="checkbox" name="keepConnected"><span>Continuar conectado</span></input>

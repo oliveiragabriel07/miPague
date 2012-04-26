@@ -1,7 +1,7 @@
 jQuery(function($){
-	$('#username').watermark('e-mail');
+	$('#username').watermark('e-mail     ');
 	
-	$('#password').watermark('senha');
+	$('#password').watermark('senha     ');
 	
 	$('#loginForm').validate({
 		debug: true,
@@ -10,9 +10,13 @@ jQuery(function($){
 				required: true,
 				email: true
 			},
-			password: {
-				required: true
-			}
+			password: 'required'
+		},
+		messages: {
+			username: {
+				required: 'Digite seu email.'
+			},
+			password: 'Digite sua senha.'
 		},
 		submitHandler: function(form) {
 			$.ajax({
@@ -24,7 +28,14 @@ jQuery(function($){
 					if (data.success) {
 						window.location = '/' + data.url;
 					} else {
-						alert('Erro! ' + data.message);
+						var passEl = $('input[name=password]'),
+							next = passEl.next(),
+							error = $($.format('<label class="error">{0}</label>', data.message));
+						
+						next && next.remove();
+						error.insertAfter(passEl);
+						passEl.addClass('error');
+						passEl.focus();
 					}
 				}
 			});

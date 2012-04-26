@@ -28,9 +28,10 @@ class Login extends CI_Controller {
 				'url' => 'home'
 			);
 		} else {
+			//TODO colocar mensagens em um helper
 			$data = array(
 				'success' => false,
-				'message' => 'usuario ou senha incorretos'
+				'message' => 'Usuario ou senha incorretos.'
 			);
 		}
 		
