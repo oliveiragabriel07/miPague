@@ -2,13 +2,74 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<script type="text/javascript" src="../jquery/jquery.js"></script>
+	<script type="text/javascript" src="../underscore/underscore.js"></script>
+	<script type="text/javascript" src="../backbone/backbone.js"></script>
 	<script type="text/javascript">
-		jQuery(function($){
-			$('#logout').click(function(e){
-				e.preventDefault();
-				window.location = '/login/logout';
+//		jQuery(function($){
+//			$('#logout').click(function(e){
+//				e.preventDefault();
+//				window.location = '/login/logout';
+//			});
+//		});
+		
+		jQuery(function($) {
+			var MPG = {};
+			
+			MPG.Group = Backbone.Model.extend({
+				defaults : {
+					title: 'tipo1bar'
+				}
 			});
-		})
+			
+			MPG.GroupList = Backbone.Collection.extend({
+				model: MPG.Group
+			});
+			
+			MPG.GroupListView = Backbone.View.extend({
+				
+				el: $('<ul></ul>'),
+				
+				initialize: function(cfg) {
+					//apply configs
+					$.extend(this, cfg);
+
+					this.collection = new MPG.GroupList([new MPG.Group({title: 'te amo minha -.-'}), new MPG.Group()]);
+					
+					//bind events
+					_.bindAll(this, 'render');
+					
+					//render
+					if (this.appendTo) {
+						this.render(this.appendTo);						
+					}
+				},
+				
+				render: function(target) {
+					var self = this;
+					
+					_(this.collection.models).each(function(item){
+						self.appendItem(item);
+					});
+					
+					this.$el.append('<a href="#">teste evento</a>');
+					
+					//append to target
+					target.append(this.el);						
+					
+					//style
+					this.$el.addClass('mpg-group-list');
+				},
+				
+				appendItem: function(item) {
+					var item = $('<li></li>').html(item.get('title'));
+					this.$el.append(item);				
+				}
+			});
+			
+			var groupList = new MPG.GroupListView({
+				appendTo: $('body')
+			});
+		});
 	</script>
 </head>
 <body>
