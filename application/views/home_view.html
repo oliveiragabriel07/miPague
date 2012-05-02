@@ -1,74 +1,96 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<script type="text/javascript" src="../jquery/jquery.js"></script>
-	<script type="text/javascript" src="../underscore/underscore.js"></script>
-	<script type="text/javascript" src="../backbone/backbone.js"></script>
+	<title>miPague</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF8" />
+
+	
+	<!--  styles -->
+	<link rel="stylesheet" type="text/css" href="../web/css/style.css" />	
+	
+	<script type="text/javascript" src="../web/lib/jquery/jquery.js"></script>
+	<script type="text/javascript" src="../web/lib/underscore/underscore.js"></script>
+	<script type="text/javascript" src="../web/lib/backbone/backbone.js"></script>
 	<script type="text/javascript">
-//		jQuery(function($){
-//			$('#logout').click(function(e){
-//				e.preventDefault();
-//				window.location = '/login/logout';
-//			});
-//		});
-		
 		jQuery(function($) {
-			var MPG = {};
+			$('#logout').click(function(e){
+				e.preventDefault();
+				window.location = '/login/logout';
+			});
 			
-			MPG.Group = Backbone.Model.extend({
-				defaults : {
-					title: 'tipo1bar'
+			var Group = Backbone.Model.extend({
+				defaults: {
+					NAME: '',
+					ID: '',
+					CLASS: ''
 				}
 			});
 			
-			MPG.GroupList = Backbone.Collection.extend({
-				model: MPG.Group
+			var GroupCollection = Backbone.Collection.extend({
+				url: '../home/getUserGroupList',
+				model: Group
 			});
 			
-			MPG.GroupListView = Backbone.View.extend({
-				
-				el: $('<ul></ul>'),
+			var GroupListView = Backbone.View.extend({
+
+				tagName: 'ul',
 				
 				initialize: function(cfg) {
 					//apply configs
 					$.extend(this, cfg);
 
-					this.collection = new MPG.GroupList([new MPG.Group({title: 'te amo minha -.-'}), new MPG.Group()]);
+					this.collection = new GroupCollection();
 					
 					//bind events
 					_.bindAll(this, 'render');
-					
-					//render
-					if (this.appendTo) {
-						this.render(this.appendTo);						
-					}
+
+					//bind collection
+					this.collection.bind('reset', this.refresh, this);
+
+					/*
+					 * TODO bootstratp 
+					 */
+					this.collection.fetch();
 				},
 				
-				render: function(target) {
-					var self = this;
-					
-					_(this.collection.models).each(function(item){
-						self.appendItem(item);
-					});
-					
-					this.$el.append('<a href="#">teste evento</a>');
-					
-					//append to target
-					target.append(this.el);						
-					
-					//style
+				render: function() {
+					this.refresh();
 					this.$el.addClass('mpg-group-list');
+					
+					return this;
 				},
-				
-				appendItem: function(item) {
-					var item = $('<li></li>').html(item.get('title'));
-					this.$el.append(item);				
+
+				refresh: function() {
+					var self = this,
+						el = this.$el;
+
+					el.html('');
+					if (this.collection.models.length === 0) {
+						//show empty text
+					} else {
+						_(this.collection.models).each(function(model){
+							el.append(new GroupListItemView({model: model}).render().el);
+						});
+					}
+
 				}
 			});
 			
-			var groupList = new MPG.GroupListView({
-				appendTo: $('body')
+			var GroupListItemView = Backbone.View.extend({
+				tagName: 'li',
+				
+			    template: _.template($('#mpg-tpl-group-list-item').html()),
+ 
+			    render:function (eventName) {
+			        this.$el.html(this.template(this.model.toJSON()));
+			        return this;
+			    }
 			});
+			
+			var groupList = new GroupListView();
+			
+			$('body').append(groupList.render().el);
+			
 		});
 	</script>
 </head>
@@ -76,5 +98,8 @@
 	<p>
 		<a id="logout" href="#">logout</a>
 	</p>
+	<script type="text/template" id="mpg-tpl-group-list-item">
+		<li class="<%= CLASS %>"><a href="#groups/<%= ID %>"><%= NAME %></a></li>
+	</script>
 </body>
 </html>

@@ -12,7 +12,7 @@ class Login extends CI_Controller {
 	function index() {
 		//verifica se usuario esta logado
 		if ($this->user->isLogged()) {
-			redirect('home');
+			redirect('');
 		} else {
 			$this->load->view('login_view.html');			
 		}
@@ -25,7 +25,7 @@ class Login extends CI_Controller {
 		if ($this->user->validate($username, $password)) {
 			$data = array(
 				'success' => true,
-				'url' => 'home'
+				'url' => ''
 			);
 		} else {
 			//TODO colocar mensagens em um helper
@@ -40,7 +40,7 @@ class Login extends CI_Controller {
 	
 	function logout() {
 		$this->user->endSession();
-		redirect('');
+		redirect('login');
 	}
 }
 

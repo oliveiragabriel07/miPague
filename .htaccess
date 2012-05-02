@@ -1,3 +1,3 @@
 RewriteEngine on
-RewriteCond $1 !^(index\.php|jquery|resources|backbone|underscore|data)
+RewriteCond $1 !^(index\.php|web|data)
 RewriteRule ^(.*)$ /index.php/$1 [L]

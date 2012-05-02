@@ -23,6 +23,14 @@ Class User_model extends CI_Model {
 		return false;
 	}
 	
+	function getActiveUserId() {
+		if ($this->session->userdata('user_id')) {
+			return $this->session->userdata('user_id');
+		}
+		
+		return null;
+	}
+	
 	function isLogged() {
 		if ($this->session->userdata('user_id')) {
 			return true;
