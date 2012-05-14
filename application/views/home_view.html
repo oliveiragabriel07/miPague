@@ -4,102 +4,27 @@
 	<title>miPague</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF8" />
 
-	
 	<!--  styles -->
 	<link rel="stylesheet" type="text/css" href="../web/css/style.css" />	
-	
+
+	<!-- lib -->
 	<script type="text/javascript" src="../web/lib/jquery/jquery.js"></script>
 	<script type="text/javascript" src="../web/lib/underscore/underscore.js"></script>
 	<script type="text/javascript" src="../web/lib/backbone/backbone.js"></script>
-	<script type="text/javascript">
-		jQuery(function($) {
-			$('#logout').click(function(e){
-				e.preventDefault();
-				window.location = '/login/logout';
-			});
-			
-			var Group = Backbone.Model.extend({
-				defaults: {
-					NAME: '',
-					ID: '',
-					CLASS: ''
-				}
-			});
-			
-			var GroupCollection = Backbone.Collection.extend({
-				url: '../home/getUserGroupList',
-				model: Group
-			});
-			
-			var GroupListView = Backbone.View.extend({
-
-				tagName: 'ul',
-				
-				initialize: function(cfg) {
-					//apply configs
-					$.extend(this, cfg);
-
-					this.collection = new GroupCollection();
-					
-					//bind events
-					_.bindAll(this, 'render');
-
-					//bind collection
-					this.collection.bind('reset', this.refresh, this);
-
-					/*
-					 * TODO bootstratp 
-					 */
-					this.collection.fetch();
-				},
-				
-				render: function() {
-					this.refresh();
-					this.$el.addClass('mpg-group-list');
-					
-					return this;
-				},
-
-				refresh: function() {
-					var self = this,
-						el = this.$el;
-
-					el.html('');
-					if (this.collection.models.length === 0) {
-						//show empty text
-					} else {
-						_(this.collection.models).each(function(model){
-							el.append(new GroupListItemView({model: model}).render().el);
-						});
-					}
-
-				}
-			});
-			
-			var GroupListItemView = Backbone.View.extend({
-				tagName: 'li',
-				
-			    template: _.template($('#mpg-tpl-group-list-item').html()),
- 
-			    render:function (eventName) {
-			        this.$el.html(this.template(this.model.toJSON()));
-			        return this;
-			    }
-			});
-			
-			var groupList = new GroupListView();
-			
-			$('body').append(groupList.render().el);
-			
-		});
-	</script>
+	
+	<!-- application -->
+	<script type="text/javascript" src="../web/js/app.js"></script>
+	<script type="text/javascript" src="../web/js/jst.js"></script>
+	<script type="text/javascript" src="../web/js/model/GroupModel.js"></script>
+	<script type="text/javascript" src="../web/js/collection/GroupCollection.js"></script>
+	<script type="text/javascript" src="../web/js/view/GroupListItem.js"></script>
+	<script type="text/javascript" src="../web/js/view/GroupList.js"></script>
+	<script type="text/javascript" src="../web/js/view/GroupDetails.js"></script>
+	<script type="text/javascript" src="../web/js/setup.js"></script>
 </head>
 <body>
 	<p>
 		<a id="logout" href="#">logout</a>
 	</p>
-	<script type="text/template" id="mpg-tpl-group-list-item">
-		<li class="<%= CLASS %>"><a href="#groups/<%= ID %>"><%= NAME %></a></li>
-	</script>
 </body>
 </html>

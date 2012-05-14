@@ -69,7 +69,7 @@ a:hover {
 
 .header .section {
 	height:90px;
-	background: url('../images/bg-header.png') no-repeat 0 bottom transparent;
+	background: url('../img/bg-header.png') no-repeat 0 bottom transparent;
 }
 
 .section {
@@ -222,7 +222,7 @@ a:hover {
 
 .header .logo {
 	float: left;
-	background:url(../images/mipague-logo.png) no-repeat transparent;
+	background:url(../img/mipague-logo.png) no-repeat transparent;
 	margin-top:10px
 }
 
@@ -249,7 +249,7 @@ a:hover {
 }
 
 .blue-button {
-	background: url('../images/bg-blue-button.png') repeat-x;
+	background: url('../img/bg-blue-button.png') repeat-x;
 	color: white;
 	width: 300px;
 	height: 50px;
@@ -276,7 +276,7 @@ a:hover {
 }
 
 .footer .content {
-	background: url('../images/divider.png') no-repeat center top transparent;
+	background: url('../img/divider.png') no-repeat center top transparent;
 }
 
 .footer .copyright {
@@ -346,7 +346,7 @@ a.white-button{
 	padding:8px 10px 6px;
 	cursor: pointer;
 	border-radius:3px;
-	background: url('../images/white-button.png') repeat-x #FFFFFF;
+	background: url('../img/white-button.png') repeat-x #FFFFFF;
 	text-decoration: none;
 }
 
