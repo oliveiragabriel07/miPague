@@ -4,8 +4,6 @@ jQuery(function($) {
 		window.location = '/login/logout';
 	});
 	
-	var groupList = new MP.view.GroupList();
-	
-	$('body').append(groupList.render().el);
-	
+	MPG.app = new MPG.App();
+	Backbone.history.start()
 });

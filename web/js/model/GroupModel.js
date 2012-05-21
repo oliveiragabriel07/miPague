@@ -1,7 +1,13 @@
-MP.model.Group = Backbone.Model.extend({
+MPG.model.Group = Backbone.Model.extend({
+	idAttribute: 'id',
+
 	defaults: {
-		NAME: '',
-		ID: '',
-		CLASS: ''
+		id: '',
+		name: '',
+		cls: ''
+	},
+	
+	initialize: function () {
+		this.operations = new MPG.collection.Operation();
 	}
 });

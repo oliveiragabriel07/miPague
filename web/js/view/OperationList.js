@@ -1,8 +1,8 @@
-MPG.view.GroupList = Backbone.View.extend({
+MPG.view.OperationList = Backbone.View.extend({
 
 	tagName: 'ul',
 	
-	className: 'mpg-group-list',
+	className: 'mpg-opearation-list',
 	
 	initialize: function(cfg) {
 		//bind events
@@ -18,10 +18,10 @@ MPG.view.GroupList = Backbone.View.extend({
 
 		el.empty();
 		if (this.collection.models.length === 0) {
-			//how to create a group
+			//empty message
 		} else {
 			this.collection.each(function(model){
-				el.append(new MPG.view.GroupListItem({model: model}).render().el);
+				el.append(new MPG.view.OperationListItem({model: model}).render().el);
 			});
 		}
 		

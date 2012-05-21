@@ -1,11 +1,10 @@
-MPG.view.GroupListItem = Backbone.View.extend({
+MPG.view.OperationListItem = Backbone.View.extend({
 	tagName: 'li',
 	
-	template: JST['group/listitem'],
+	template: JST['operation/listitem'],
 	
     render: function () {
         this.$el.html(this.template(this.model.toJSON()));
-		this.$el.addClass(this.model.get('cls'));
         return this;
     }
 });
