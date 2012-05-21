@@ -17,9 +17,9 @@ class Home extends CI_Controller {
 	
 	function getUserGroupList() {
 		$userId = $this->user->getActiveUserId();
-		$result = $this->group->getUserGroupList($userId);
+		$groupList = $this->group->getUserGroupList($userId);
 		
-		echo json_encode($result->result());
+		echo json_encode($groupList);
 	}
 }
 
