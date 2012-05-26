@@ -4,9 +4,8 @@ include 'application/dtos/GroupDTO.php';
 
 Class Group_Model extends CI_Model {
 	function getUserGroupList($id) {
-		$this->db->select('*');
-		$this->db->from('T_GROUP');
-		$this->db->join('T_USER_GROUP', 'T_USER_GROUP.GROUP_ID = T_GROUP.ID');
+		$this->db->from('T_GROUP AS G');
+		$this->db->join('T_USER_GROUP AS U', 'U.GROUP_ID = G.ID');
 		$this->db->where('USER_ID', $id);		
 		
 		$groupList = array();
