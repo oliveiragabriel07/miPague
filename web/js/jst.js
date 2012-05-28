@@ -19,11 +19,11 @@ var JST = {
 		'<button class="new-expense">Despesa</button>',
 	].join('')),
 	
-	'operation/listitem' : _.template([
+	'activity/listitem' : _.template([
 		'<ul>',
-			'<li><%= DATE %></li>',
-			'<li><%= USERNAME %> pagou por <%= DESCRIPTION %></li>',
-			'<li><%= VALUE %></li>',
+			'<li><%= date %></li>',
+			'<li><%= description %></li>',
+			'<li><%= value %></li>',
 		'</ul>'
 	].join(''))
 };

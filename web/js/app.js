@@ -39,14 +39,7 @@ MPG.App = Backbone.Router.extend({
     		return;
     	}
     	
-    	this.group.operations.reset([{
-			VALUE: 100.00,
-			DATE: new Date(),
-			DESCRIPTION: 'Conta de água',
-			USERNAME: 'Gabriel Oliveira',
-			TYPE: 'expense'
-    	}]);
-    	
+    	this.group.activities.fetch();
     	var groupView = new MPG.view.Group({model: this.group});
 
     	$('body').html(groupView.render().el);

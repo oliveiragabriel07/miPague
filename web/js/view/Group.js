@@ -6,7 +6,7 @@ MPG.view.Group = Backbone.View.extend({
 	template: JST['group/details'],
 	
 	initialize: function(cfg) {
-		this.homeView = new MPG.view.Group.Home({collection: this.model.operations});
+		this.homeView = new MPG.view.Group.Home({collection: this.model.activities});
 		
 		//bind events
 		_.bindAll(this, 'render');		
@@ -32,15 +32,15 @@ MPG.view.Group.Home = Backbone.View.extend({
 	},
 	
 	initialize: function () {
-		this.operationListView = new MPG.view.OperationList({collection: this.collection});
+		this.activityListView = new MPG.view.ActivityList({collection: this.collection});
 		_.bindAll(this, 'render');
 	},
 	
 	render: function() {
 		this.$el.html(this.template());
 		
-		//append operations list
-		this.$el.append(this.operationListView.render().el);
+		//append activities list
+		this.$el.append(this.activityListView.render().el);
 		
 		return this;
 	},

@@ -1,8 +1,8 @@
-MPG.view.OperationList = Backbone.View.extend({
+MPG.view.ActivityList = Backbone.View.extend({
 
 	tagName: 'ul',
 	
-	className: 'mpg-opearation-list',
+	className: 'mpg-activity-list',
 	
 	initialize: function(cfg) {
 		//bind events
@@ -21,7 +21,7 @@ MPG.view.OperationList = Backbone.View.extend({
 			//empty message
 		} else {
 			this.collection.each(function(model){
-				el.append(new MPG.view.OperationListItem({model: model}).render().el);
+				el.append(new MPG.view.ActivityListItem({model: model}).render().el);
 			});
 		}
 		

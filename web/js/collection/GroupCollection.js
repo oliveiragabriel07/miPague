@@ -1,4 +1,4 @@
 MPG.collection.Group = Backbone.Collection.extend({
-	url: '../home/getUserGroupList',
+	url: '../group/getUserGroupList',
 	model: MPG.model.Group
 });

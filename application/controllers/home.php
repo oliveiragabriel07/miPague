@@ -4,7 +4,6 @@ class Home extends CI_Controller {
 	function __construct() {
 		parent::__construct();
 		
-		$this->load->model('Group_model', 'group');
 		$this->load->model('User_model', 'user');
 		if(!$this->user->isLogged()) {
 			redirect('login');
@@ -13,13 +12,6 @@ class Home extends CI_Controller {
 	
 	function index() {
 		$this->load->view('home_view.html');
-	}
-	
-	function getUserGroupList() {
-		$userId = $this->user->getActiveUserId();
-		$groupList = $this->group->getUserGroupList($userId);
-		
-		echo json_encode($groupList);
 	}
 }
 

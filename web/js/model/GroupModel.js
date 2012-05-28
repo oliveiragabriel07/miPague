@@ -8,6 +8,6 @@ MPG.model.Group = Backbone.Model.extend({
 	},
 	
 	initialize: function () {
-		this.operations = new MPG.collection.Operation();
+		this.activities = new MPG.collection.Activity({group: this});
 	}
 });

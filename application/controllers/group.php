@@ -5,10 +5,18 @@ class Group extends CI_Controller {
 		parent::__construct();
 		
 		$this->load->model('User_model', 'user');
+		$this->load->model('Group_model', 'group');
 		$this->load->model('Activity_model', 'activity');
 		if(!$this->user->isLogged()) {
 			redirect('login');
 		}
+	}
+	
+	function getUserGroupList() {
+		$userId = $this->user->getActiveUserId();
+		$groupList = $this->group->getUserGroupList($userId);
+		
+		echo json_encode($groupList);
 	}
 	
 	function getGroupActivity() {
@@ -16,8 +24,7 @@ class Group extends CI_Controller {
 		//check if user has group
 		
 		$activityList = $this->activity->getGroupActivity($groupId);
-//		return json_encode($activityList);
-		echo var_dump(json_encode($activityList));
+		echo json_encode($activityList);
 	}
 }
 
