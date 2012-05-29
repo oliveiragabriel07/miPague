@@ -15,5 +15,7 @@ MPG.model.Activity = Backbone.Model.extend({
 		response.value = parseFloat(response.value);
 		response.date = Date.parse(response.date);
 		response.userList = response.userList.split(',');
+		
+		return response;
 	}
 });

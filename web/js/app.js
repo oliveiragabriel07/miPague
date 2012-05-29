@@ -39,8 +39,8 @@ MPG.App = Backbone.Router.extend({
     		return;
     	}
     	
-    	this.group.activities.fetch();
     	var groupView = new MPG.view.Group({model: this.group});
+		this.group.activities.fetch();
 
     	$('body').html(groupView.render().el);
     }

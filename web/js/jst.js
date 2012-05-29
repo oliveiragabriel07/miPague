@@ -21,7 +21,7 @@ var JST = {
 	
 	'activity/listitem' : _.template([
 		'<ul>',
-			'<li><%= date %></li>',
+			'<li><%= date.toString("dd/MM/yyyy") %></li>',
 			'<li><%= description %></li>',
 			'<li><%= value %></li>',
 		'</ul>'
