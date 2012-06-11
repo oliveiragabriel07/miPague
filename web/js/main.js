@@ -1,9 +1,4 @@
 jQuery(function($) {
-	$('#logout').click(function(e){
-		e.preventDefault();
-		window.location = '/login/logout';
-	});
-	
-	MPG.app = new MPG.App();
+	MPG.app = new MPG.AppRouter();
 	Backbone.history.start()
 });

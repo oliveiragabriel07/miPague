@@ -8,27 +8,32 @@ var MPG = {
 	collection: {}
 };
 
-MPG.App = Backbone.Router.extend({
+MPG.BLANK_IMAGE = '../web/img/blank.gif';
+
+MPG.emptyFn = function() {};
+
+MPG.AppRouter = Backbone.Router.extend({
     routes:{
         '': 'home',
         'groups/:id': 'groupDetails'
     },
 
     initialize:function () {
-    	/*
+		this.groups = new MPG.collection.Group();
+		
+		this.appView = new MPG.AppLayout();
+		this.navigateView = new MPG.view.GroupList({collection: this.groups});
+		
+		$('.navigation', this.appView.el).html(this.navigateView.render().el);
+		
+		/*
     	 * Todo bootstrap
     	 */
-		this.groups = new MPG.collection.Group();
 		this.groups.fetch();
     },
     
     home: function() {
-    	if (!this.groupList) {
-			this.groupList = new MPG.view.GroupList({collection: this.groups});
-			this.groupList.render();    		
-    	}
-		
-		$('body').html(this.groupList.el);
+    	$('.main-content', this.appView.el).html('Home Page');
     },
     
     groupDetails: function(id) {
@@ -40,9 +45,9 @@ MPG.App = Backbone.Router.extend({
     	}
     	
     	var groupView = new MPG.view.Group({model: this.group});
+    	$('.main-content', this.appView.el).html(groupView.render().el);
+    	
 		this.group.activities.fetch();
-
-    	$('body').html(groupView.render().el);
     }
 });
 
