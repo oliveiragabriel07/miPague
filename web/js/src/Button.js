@@ -26,6 +26,8 @@ MPG.Button = Backbone.View.extend({
 				items: this.menu,
 				target: this.$el
 			});
+			
+			this.cls += ' mpg-btn-menu';
 		}
 	},
 	
@@ -45,7 +47,7 @@ MPG.Button = Backbone.View.extend({
 	onClick: function(e) {
 		e.preventDefault();
 		if (this.menu) {
-			this.menu.show();
+			this.showMenu();
 		}
 		if (this.handler) {
 			this.handler.call(this.scope, this, e);			
@@ -65,5 +67,11 @@ MPG.Button = Backbone.View.extend({
 			}
 			$(document).on('mouseover', fn);
 		}
+	},
+	
+//other methods
+	showMenu: function() {
+		this.menu.show();
+		this.$el.addClass('mpg-btn-menu-active');
 	}
 });

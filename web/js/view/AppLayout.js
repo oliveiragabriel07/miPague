@@ -28,6 +28,9 @@ MPG.Header = Backbone.View.extend({
 			menu: [{
 				text: 'Sair',
 				href: '/login/logout'
+			},{
+				text: 'Configuracoes da conta',
+				href: '#'
 			}]
 		});
 	},

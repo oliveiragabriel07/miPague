@@ -176,8 +176,29 @@
 }
 
 /* With menu */
+.mpg-btn-link.mpg-btn-menu-active span.mpg-btn-l{
+	background-position: 0 -180px;
+}
+
+.mpg-btn-link.mpg-btn-menu-active span.mpg-btn-m{
+	background-position: 0 -210px;
+}
+
+.mpg-btn-link.mpg-btn-menu-active span.mpg-btn-r{
+	background-position: 0 -240px;
+}
+
+.mpg-btn-menu-active {
+	z-index: 1000;
+}
+
 .mpg-btn-m em.mpg-btn-arrow{
 	padding-right:10px;
+}
+
+.mpg-btn-link.mpg-btn-menu-active button {
+	color: #000000;
+	text-shadow: none;
 }
 
 /**
@@ -185,7 +206,11 @@
  */
 .mpg-menu {
 	position: absolute;
+	z-index: 999;
 	background-color: #FFFFFF;
+	border: 1px solid #D4D4D4;
+	-webkit-box-shadow: 0px 0px 5px 0px #666666;
+	box-shadow: 0px 0px 5px 0px #666666;
 }
 
 .mpg-menu-item {
@@ -203,4 +228,5 @@
 
 .mpg-menu-item a:hover {
 	background-color: #F5F5F5;
+	color: #B62A59;
 }
