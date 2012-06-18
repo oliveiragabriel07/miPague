@@ -22,11 +22,15 @@ MPG.Button = Backbone.View.extend({
 		$.extend(this, cfg);
 		
 		if (this.menu) {
+			//create menu
 			this.menu = new MPG.Menu({
 				items: this.menu,
 				target: this.$el
 			});
-			
+			//bind menu events
+			this.menu.on('show', this.onShowMenu, this);
+			this.menu.on('hide', this.onHideMenu, this);
+			//extra css class
 			this.cls += ' mpg-btn-menu';
 		}
 	},
@@ -46,8 +50,8 @@ MPG.Button = Backbone.View.extend({
 //listeners
 	onClick: function(e) {
 		e.preventDefault();
-		if (this.menu) {
-			this.showMenu();
+		if (this.menu && !this.menu.isVisible() && !this.ignoreClick) {
+			this.menu.show();
 		}
 		if (this.handler) {
 			this.handler.call(this.scope, this, e);			
@@ -69,9 +73,19 @@ MPG.Button = Backbone.View.extend({
 		}
 	},
 	
-//other methods
-	showMenu: function() {
-		this.menu.show();
+	onHideMenu: function() {
+		this.ignoreClick = true;
+		setTimeout(_.bind(this.restoreClick, this), 250);
+		this.$el.removeClass('mpg-btn-menu-active');
+	},
+	
+	onShowMenu: function() {
+		this.ignoreClick = false;
 		this.$el.addClass('mpg-btn-menu-active');
+	},
+	
+//other methods
+	restoreClick: function() {
+		this.ignoreClick = false;
 	}
 });

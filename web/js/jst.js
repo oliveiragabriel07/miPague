@@ -31,7 +31,12 @@ var JST = {
 	
 	'button': _.template([
 			'<span class="mpg-btn-l"></span>',
-			'<span class="mpg-btn-m"><em class="<%= menuclass %>"><button type="<%= type %>"><%= text %></button></em></span>',
+			'<span class="mpg-btn-m">',
+				'<em class="<%= menuclass %>">',
+					'<button type="<%= type %>"><%= text %></button>',
+					'<span class="mpg-arrow"></span>',
+				'</em>',
+			'</span>',
 			'<span class="mpg-btn-r"></span>'
 	].join('')),
 	

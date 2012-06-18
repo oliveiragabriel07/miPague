@@ -19,8 +19,30 @@ MPG.Menu = Backbone.View.extend({
 			offset: this.offset,
 			of: this.target
 		},this.align);
+		
+		$(window).on('resize', _.bind(this.onWindowResize, this));
 	},
 	
+//listeners
+	onWindowResize: function() {
+		var me = this;
+		
+		if (!this.visible) {
+			return;
+		}
+		setTimeout(function() {
+			me.hide();
+		}, 200);
+	},
+	
+	onMouseDown: function(e) {
+		if ($(e.target).closest('.mpg-menu').length === 0) {
+			this.hide();
+			$(document).off('mousedown.menu');			
+		}
+	},
+
+//other methods
 	// private
 	render: function() {
 		var el = this.$el,
@@ -31,9 +53,9 @@ MPG.Menu = Backbone.View.extend({
 			el.append(itemTpl(item));
 		});
 		
-		this.$el.addClass('mpg-hide-display');
+		this.$el.addClass('mpg-hide-visibility');
 		
-		//append to body
+		//append this element to body
 		$('body').append(this.el);
 		
 		//check min width
@@ -42,12 +64,14 @@ MPG.Menu = Backbone.View.extend({
 			this.$el.width(this.target.width() - borderOffset);
 		}
 		
-		//re-position
-		this.$el.position(this.position);
-		
+		//rise rendered flag
 		this.rendered = true;
 		
 		return this;
+	},
+	
+	doAlign: function() {
+		this.$el.position(this.position);
 	},
 	
 	show: function() {
@@ -55,12 +79,27 @@ MPG.Menu = Backbone.View.extend({
 			this.render();			
 		}
 		
-		this.$el.removeClass('mpg-hide-display');
+		//align menu to target
+		this.doAlign();
+		//remove hidden css class
+		this.$el.removeClass('mpg-hide-visibility');
+		//bind window mouse down
+		$(document).on('mousedown.menu', _.bind(this.onMouseDown, this));
+		//rise visible flag
+		this.visible = true;
+		this.trigger('show');
+		
 		return this;
 	},
 	
 	hide: function() {
-		this.$el.addClass('mpg-hide-display');
+		this.$el.addClass('mpg-hide-visibility');
+		this.visible = false;
+		this.trigger('hide');
+	},
+	
+	isVisible: function() {
+		return !!this.visible;
 	}
 	
 });

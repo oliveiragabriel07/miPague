@@ -7,8 +7,7 @@
 .mpg-btn button{
     border:0 none;
     background-color:transparent;
-    padding-left:3px;
-    padding-right:3px;
+    padding: 0 5px;
     cursor:pointer;
     margin:0;
     overflow:visible;
@@ -28,119 +27,12 @@
 	height: 30px;
 }
 
-.mpg-btn-link span{
+.mpg-btn-link span.mpg-btn-l,
+.mpg-btn-link span.mpg-btn-r,
+.mpg-btn-link span.mpg-btn-m {
 	background-image: url('../img/btn-link-sprite.png');
 	float: left;
 	height: 30px;
-}
-
-/* Only text */
-.x-btn-noicon .x-btn-small .x-btn-text{
-	height: 16px;
-}
-
-/* Only icons */
-.x-btn-icon .x-btn-text{
-    background-position: center;
-	background-repeat: no-repeat;
-}
-
-.x-btn-icon .x-btn-small .x-btn-text{
-	height: 16px;
-	width: 16px;
-}
-
-.x-btn-icon .x-btn-medium .x-btn-text{
-    height: 24px;
-	width: 24px;
-}
-
-.x-btn-icon .x-btn-large .x-btn-text{
-    height: 32px;
-	width: 32px;
-}
-
-/* Icons and text */
-/* left */
-.x-btn-text-icon .x-btn-icon-small-left .x-btn-text{
-    background-position: 0 center;
-	background-repeat: no-repeat;
-    padding-left:18px;
-    height:16px;
-}
-
-.x-btn-text-icon .x-btn-icon-medium-left .x-btn-text{
-    background-position: 0 center;
-	background-repeat: no-repeat;
-    padding-left:26px;
-    height:24px;
-}
-
-.x-btn-text-icon .x-btn-icon-large-left .x-btn-text{
-    background-position: 0 center;
-	background-repeat: no-repeat;
-    padding-left:34px;
-    height:32px;
-}
-
-/* top */
-.x-btn-text-icon .x-btn-icon-small-top .x-btn-text{
-    background-position: center 0;
-	background-repeat: no-repeat;
-    padding-top:18px;
-}
-
-.x-btn-text-icon .x-btn-icon-medium-top .x-btn-text{
-    background-position: center 0;
-	background-repeat: no-repeat;
-    padding-top:26px;
-}
-
-.x-btn-text-icon .x-btn-icon-large-top .x-btn-text{
-    background-position: center 0;
-	background-repeat: no-repeat;
-    padding-top:34px;
-}
-
-/* right */
-.x-btn-text-icon .x-btn-icon-small-right .x-btn-text{
-    background-position: right center;
-	background-repeat: no-repeat;
-    padding-right:18px;
-    height:16px;
-}
-
-.x-btn-text-icon .x-btn-icon-medium-right .x-btn-text{
-    background-position: right center;
-	background-repeat: no-repeat;
-    padding-right:26px;
-    height:24px;
-}
-
-.x-btn-text-icon .x-btn-icon-large-right .x-btn-text{
-    background-position: right center;
-	background-repeat: no-repeat;
-    padding-right:34px;
-    height:32px;
-}
-
-/* bottom */
-.x-btn-text-icon .x-btn-icon-small-bottom .x-btn-text{
-    background-position: center bottom;
-	background-repeat: no-repeat;
-    padding-bottom:18px;
-}
-
-.x-btn-text-icon .x-btn-icon-medium-bottom .x-btn-text{
-    background-position: center bottom;
-	background-repeat: no-repeat;
-    padding-bottom:26px;
-}
-
-.x-btn-text-icon .x-btn-icon-large-bottom .x-btn-text{
-    background-position: center bottom;
-	background-repeat: no-repeat;
-    padding-bottom:34px;
 }
 
 /* background positioning */
@@ -192,10 +84,6 @@
 	z-index: 1000;
 }
 
-.mpg-btn-m em.mpg-btn-arrow{
-	padding-right:10px;
-}
-
 .mpg-btn-link.mpg-btn-menu-active button {
 	color: #000000;
 	text-shadow: none;
@@ -204,6 +92,26 @@
 /**
  * 	Menu
  */
+.mpg-btn-menu em.mpg-btn-arrow span.mpg-arrow{
+	position: relative;
+	top: -1px;
+	border-style: solid dashed dashed;
+	border-color: transparent;
+	border-top-color: #FFFFFF;
+	display: -moz-inline-box;
+	display: inline-block;
+	font-size: 0;
+	height: 0;
+	line-height: 0;
+	width: 0;
+	border-width: 4px 4px 0;
+	padding-top: 1px;
+}
+
+.mpg-btn-menu-active em.mpg-btn-arrow span.mpg-arrow{
+	border-top-color: #000000;
+}
+
 .mpg-menu {
 	position: absolute;
 	z-index: 999;
