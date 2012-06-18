@@ -11,7 +11,10 @@ class Home extends CI_Controller {
 	}
 	
 	function index() {
-		$this->load->view('home_view.html');
+		$user = $this->user->getActiveUserData();
+		$data['user'] = $user;
+		
+		$this->load->view('home_view', $data);
 	}
 }
 

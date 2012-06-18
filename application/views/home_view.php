@@ -11,6 +11,7 @@
 	<!-- lib -->
 	<script type="text/javascript" src="../web/lib/jquery/jquery.js"></script>
 	<script type="text/javascript" src="../web/lib/jquery/jquery.position.js"></script>
+	<script type="text/javascript" src="../web/lib/jquery/jquery.validate.js"></script>
 	<script type="text/javascript" src="../web/lib/underscore/underscore.js"></script>
 	<script type="text/javascript" src="../web/lib/backbone/backbone.js"></script>
 	<script type="text/javascript" src="../web/lib/Array.js"></script>
@@ -27,16 +28,20 @@
 	<script type="text/javascript" src="../web/js/collection/GroupCollection.js"></script>
 	<script type="text/javascript" src="../web/js/collection/ActivityCollection.js"></script>
 	<script type="text/javascript" src="../web/js/view/AppLayout.js"></script>
+	<script type="text/javascript" src="../web/js/view/Header.js"></script>
 	<script type="text/javascript" src="../web/js/view/GroupListItem.js"></script>
 	<script type="text/javascript" src="../web/js/view/GroupList.js"></script>
 	<script type="text/javascript" src="../web/js/view/Group.js"></script>
 	<script type="text/javascript" src="../web/js/view/ActivityList.js"></script>
 	<script type="text/javascript" src="../web/js/view/ActivityListItem.js"></script>
-	<script type="text/javascript" src="../web/js/main.js"></script>	
+	<script type="text/javascript" src="../web/js/main.js"></script>
+	
+	<script type="text/javascript">
+		MPG.Bootstrap = {};
+		MPG.Bootstrap.User = <?php echo json_encode($user); ?>
+	</script>
+	
 </head>
 <body>
-	<p>
-		<a id="logout" href="#">logout</a>
-	</p> 
 </body>
 </html>
