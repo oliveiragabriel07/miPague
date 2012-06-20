@@ -19,7 +19,8 @@ MPG.AppRouter = Backbone.Router.extend({
     },
 
     initialize:function () {
-		this.groups = new MPG.collection.Group();
+		this.user = new MPG.model.User(MPG.Bootstrap.User, {parse: true});
+		this.groups = this.user.groups;
 		
 		this.appView = new MPG.AppLayout();
 		this.navigateView = new MPG.view.GroupList({collection: this.groups});
@@ -29,7 +30,7 @@ MPG.AppRouter = Backbone.Router.extend({
 		/*
     	 * Todo bootstrap
     	 */
-		this.groups.fetch();
+		// this.groups.fetch();
     },
     
     home: function() {

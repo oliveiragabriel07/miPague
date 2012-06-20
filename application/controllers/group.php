@@ -12,8 +12,8 @@ class Group extends CI_Controller {
 		}
 	}
 	
-	function getUserGroupList() {
-		$userId = $this->user->getActiveUserId();
+	function getList() {
+		$userId = $this->user->getId();
 		$groupList = $this->group->getUserGroupList($userId);
 		
 		echo json_encode($groupList);

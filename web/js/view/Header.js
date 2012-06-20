@@ -7,6 +7,10 @@ MPG.Header = Backbone.View.extend({
 		var text = '{0} {1}',
 			data = MPG.Bootstrap.User;
 			
+		//TODO ModelMgr
+		//this.model = MPG.ModelMgr.get('MPG.model.User');
+		//model.onchange -> updata dropdown text
+			
 		this.navigateAccountBtn = new MPG.Header.LinkButton({
 			text: $.format(text, data.name, data.surname),
 			menu: [{

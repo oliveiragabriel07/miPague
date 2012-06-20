@@ -30,23 +30,23 @@ Class Activity_Model extends CI_Model {
 		
 		$activityList = array();
 		foreach ($query->result() as $row) {
-			$activity = new ActivityDTO();
-			$this->copyActivity($activity, $row);
-			$activityList[] = $activity;
+			$activityList[] = $this->copyActivity($row);
 		}
 		
 		return $activityList;
 	}
 
-	function copyActivity($activity, $o) {
-		$activity->setId($o->ACTIVITY_ID);
-		$activity->setDescription($o->DESC);
-		$activity->setValue($o->VALUE);
-		$activity->setDate($o->DATE);
-		$activity->setType($o->ACTIVITY_TYPE);
-		$activity->setUserFrom($o->FROM_NAME);
-		$activity->setUserTo($o->TO_NAME);
-		$activity->setUserList($o->USERLIST);
+	function copyActivity($activity) {
+		$activityDTO = new ActivityDTO();
+		$activityDTO->setId($activity->ACTIVITY_ID);
+		$activityDTO->setDescription($activity->DESC);
+		$activityDTO->setValue($activity->VALUE);
+		$activityDTO->setDate($activity->DATE);
+		$activityDTO->setType($activity->ACTIVITY_TYPE);
+		$activityDTO->setUserFrom($activity->FROM_NAME);
+		$activityDTO->setUserTo($activity->TO_NAME);
+		$activityDTO->setUserList($activity->USERLIST);
+		return $activityDTO;
 	}
 }
 

@@ -20,10 +20,13 @@
 	<!-- application -->
 	<script type="text/javascript" src="../web/js/app.js"></script>
 	<script type="text/javascript" src="../web/js/jst.js"></script>
-	<script type="text/javascript" src="../web/js/src/Button.js"></script>
-	<script type="text/javascript" src="../web/js/src/Menu.js"></script>
+	<script type="text/javascript" src="../web/js/src/ClassMgr.js"></script>
+	<script type="text/javascript" src="../web/js/src/NestedModel.js"></script>
+	<script type="text/javascript" src="../web/js/src/widgets/Button.js"></script>
+	<script type="text/javascript" src="../web/js/src/widgets/Menu.js"></script>
 	<script type="text/javascript" src="../web/js/util/Format.js"></script>
 	<script type="text/javascript" src="../web/js/model/GroupModel.js"></script>
+	<script type="text/javascript" src="../web/js/model/UserModel.js"></script>
 	<script type="text/javascript" src="../web/js/model/ActivityModel.js"></script>
 	<script type="text/javascript" src="../web/js/collection/GroupCollection.js"></script>
 	<script type="text/javascript" src="../web/js/collection/ActivityCollection.js"></script>
@@ -35,12 +38,10 @@
 	<script type="text/javascript" src="../web/js/view/ActivityList.js"></script>
 	<script type="text/javascript" src="../web/js/view/ActivityListItem.js"></script>
 	<script type="text/javascript" src="../web/js/main.js"></script>
-	
 	<script type="text/javascript">
 		MPG.Bootstrap = {};
 		MPG.Bootstrap.User = <?php echo json_encode($user); ?>
 	</script>
-	
 </head>
 <body>
 </body>

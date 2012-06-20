@@ -12,18 +12,19 @@ Class Group_Model extends CI_Model {
 		$query = $this->db->get();
 		
 		foreach ($query->result() as $row) {
-			$group = new GroupDTO();
-			$this->copyGroup($group, $row);
+			$group = $this->copyGroup($row);
 			$groupList[] = $group;
 		}
 		
 		return $groupList;
 	}
 
-	function copyGroup($group, $o) {
-		$group->setId($o->ID);
-		$group->setName($o->NAME);
-		$group->setCls($o->CLASS);
+	function copyGroup($group) {
+		$groupDTO = new GroupDTO();
+		$groupDTO->setId($group->ID);
+		$groupDTO->setName($group->NAME);
+		$groupDTO->setCls($group->CLASS);
+		return $groupDTO;
 	}
 }
 

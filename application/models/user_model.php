@@ -2,23 +2,22 @@
 include 'application/dtos/UserDTO.php';
 
 Class User_model extends CI_Model {
-	function get($id) {
+	function __construct() {
+		parent::__construct();
+		$this->load->model('Group_model', 'group');
+	}
+	
+	function getById($id) {
 		$this->db->where('ID', $id);
 		$this->db->from('T_USER');
 		$query = $this->db->get();
-		$o = $query->first_row();
-
-		$user = new UserDTO();
-		$user->setId($o->ID);
-		$user->setName($o->NAME);
-		$user->setSurName($o->SURNAME);
-		$user->setNickName($o->NICKNAME);
-		$user->setUserName($o->USERNAME);
-		$user->setStatus($o->STATUS);
+		$user = $this->copyUserDetails($query->first_row());
+		$user->setGroupList($this->group->getUserGroupList($id));
+		
 		return $user;
 	}
 	
-	function getActiveUserId() {
+	function getId() {
 		if ($this->session->userdata('user_id')) {
 			return $this->session->userdata('user_id');
 		}
@@ -26,9 +25,8 @@ Class User_model extends CI_Model {
 		return null;
 	}
 	
-	function getActiveUserData () {
-		$id = $this->getActiveUserId();
-		return $this->get($id);
+	function getUserDetails () {
+		return $this->getById($this->getId());
 	}
 	
 	function validate($username, $password) {
@@ -62,6 +60,17 @@ Class User_model extends CI_Model {
 	function endSession() {
 		$this->session->unset_userdata('user_id');
 		$this->session->sess_destroy();
+	}
+	
+	function copyUserDetails($user) {
+		$userDTO = new UserDTO();
+		$userDTO->setId($user->ID);
+		$userDTO->setName($user->NAME);
+		$userDTO->setSurName($user->SURNAME);
+		$userDTO->setNickName($user->NICKNAME);
+		$userDTO->setUserName($user->USERNAME);
+		$userDTO->setStatus($user->STATUS);
+		return $userDTO;
 	}
 }
 ?>

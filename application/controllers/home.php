@@ -11,7 +11,7 @@ class Home extends CI_Controller {
 	}
 	
 	function index() {
-		$user = $this->user->getActiveUserData();
+		$user = $this->user->getUserDetails();
 		$data['user'] = $user;
 		
 		$this->load->view('home_view', $data);
