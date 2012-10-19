@@ -9,7 +9,7 @@ MPG.view.GroupList = Backbone.View.extend({
 		_.bindAll(this, 'render');
 
 		//bind collection
-		this.collection.bind('reset', this.render);
+		// this.collection.bind('reset', this.render);
 	},
 	
 	render: function() {
@@ -17,13 +17,13 @@ MPG.view.GroupList = Backbone.View.extend({
 			el = this.$el;
 
 		el.empty();
-		if (this.collection.models.length === 0) {
-			//how to create a group
-		} else {
-			this.collection.each(function(model){
-				el.append(new MPG.view.GroupListItem({model: model}).render().el);
-			});
-		}
+		// if (this.collection.models.length === 0) {
+			// //how to create a group
+		// } else {
+			// this.collection.each(function(model){
+				// el.append(new MPG.view.GroupListItem({model: model}).render().el);
+			// }, this);
+		// }
 		
 		return this;
 	}

@@ -1,3 +1,4 @@
+<?php header('Content-type: text/html; charset=utf-8'); ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -39,14 +40,14 @@
 						<form id="loginForm">
 							<h2>Login</h2>
 							<div class="username-p">
-								<input class="mipague-textfield" type="text" name="username" id="username"></input>
+								<input class="mipague-textfield" type="text" name="username" id="username" />
 							</div>
 							<div class="pass-p">
-								<input class="mipague-textfield" type="password" name="password" id="password"></input>
+								<input class="mipague-textfield" type="password" name="password" id="password" />
 							</div>
-							<input class="mipague-button login-button" type="submit" value="Login" id="login"></input>
+							<input class="mipague-button login-button" type="submit" value="Login" id="login" />
 							<label class="keep-connected">
-								<input type="checkbox" name="keepConnected"><span>Continuar conectado</span></input>
+								<input type="checkbox" name="keepConnected" /><span>Continuar conectado</span>
 							</label>
 							<a class="forgot-password">Esqueceu sua senha?</a>
 						</form>

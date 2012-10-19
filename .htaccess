@@ -1,3 +1,6 @@
 RewriteEngine on
 RewriteCond $1 !^(index\.php|web|data)
 RewriteRule ^(.*)$ /index.php/$1 [L]
+AddCharset UTF-8 .html
+AddCharset UTF-8 .php
+AddCharset UTF-8 .js

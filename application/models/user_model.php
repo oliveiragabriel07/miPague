@@ -67,7 +67,7 @@ Class User_model extends CI_Model {
 		$userDTO->setId($user->ID);
 		$userDTO->setName($user->NAME);
 		$userDTO->setSurName($user->SURNAME);
-		$userDTO->setNickName($user->NICKNAME);
+		$userDTO->setDisplayName($user->DISPLAYNAME);
 		$userDTO->setUserName($user->USERNAME);
 		$userDTO->setStatus($user->STATUS);
 		return $userDTO;

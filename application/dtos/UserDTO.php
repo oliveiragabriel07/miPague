@@ -6,7 +6,7 @@ Class UserDTO {
 	
 	public $surname;
 	
-	public $nickname;
+	public $displayname;
 	
 	public $username;
 	
@@ -40,12 +40,12 @@ Class UserDTO {
 		$this->surname = $surname;
 	}
 	
-	function getNickName() {
-		return $this->nickname;
+	function getDisplayName() {
+		return $this->displayname;
 	}
 	
-	function setNickName($nickname) {
-		$this->nickname = $nickname;
+	function setDisplayName($displayname) {
+		$this->displayname = $displayname;
 	}
 
 	function getUserName() {

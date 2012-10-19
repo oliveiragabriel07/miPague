@@ -20,13 +20,56 @@ var JST = {
 			'</div>',
 		'</div>'					
 	].join('')),
-	
+// <div class="dropdown">
+  // <!-- Link or button to toggle dropdown -->
+  // <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+    // <li><a tabindex="-1" href="#">Action</a></li>
+    // <li><a tabindex="-1" href="#">Another action</a></li>
+    // <li><a tabindex="-1" href="#">Something else here</a></li>
+    // <li class="divider"></li>
+    // <li><a tabindex="-1" href="#">Separated link</a></li>
+  // </ul>
+// </div>	
 	'header': _.template([
 		'<h1 class="mpg-logo"><a href="#" title="miPague">miPague</a></h1>',
 		'<div class="mpg-notification"></div>',
-		'<div class="mpg-right-menu">',
-			'<ul class="mpg-link-list"></ul>',
+        '<div class="mpg-right-menu">',
+            '<ul class="mpg-link-list">',
+                '<li class="dropdown user-dropdown">',
+                
+                    '<div class="mpg-btn-link">',
+                        '<span class="mpg-btn-l"></span>',
+                        '<span class="mpg-btn-m">',
+                            '<em>',
+                                '<button><%= displayname %></button>',
+                            '</em>',
+                        '</span>',
+                        '<span class="mpg-btn-r"></span>',
+                    '</div>',
+                    
+                    '<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">',
+                        '<li><a tabindex="-1" href="#user/profile">perfil</a></li>',
+                        '<li><a tabindex="-1" href="/login/logout">sair</a></li>',
+                    '</ul>',
+                '</li>',
+            '</ul>',
 		'</div>'
+	].join('')),
+	
+	'navigation': _.template([
+	    '<div class="mpg-navigate-user">',
+	       '<a href="#user/profile" class="navigate-profile user-profile-img-box">',
+	           '<img src="<%= MPG.BLANK_IMAGE %>" class="user-profile-img"/>',
+	       '</a>',
+	       '<a href="#user/profile" class="navigate-profile user-profile-name"><%= displayname %></a>',
+	    '</div>',
+	    '<div class="mpg-navigate-main">',
+    	    '<ul>',
+    	       '<li><a href="#" class="navigate-home">Resumo</a></li>',
+    	    '</ul>',
+        '</div>',
+        '<div class="mpg-navigate-group">',
+        '</div>'
 	].join('')),
 	
 	'button': _.template([
@@ -62,6 +105,16 @@ var JST = {
 	'group/home' : _.template([
 		'<button class="new-repayment">Reembolso</button>',
 		'<button class="new-expense">Despesa</button>',
+	].join('')),
+	
+	'user/profile' : _.template([
+	    '<div class="mpg-editfield editfield">',
+	       '<div class="view"><%= displayname%></div>',
+	       '<div class="edit">',
+	           '<input type="text" name="name" value="<%= name%>" />',
+	           '<input type="text" name="surname" value="<%= surname%>" />',
+	       '</div>',
+	    '</div>'
 	].join('')),
 	
 	'activity/listitem' : _.template([

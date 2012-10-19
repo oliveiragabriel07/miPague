@@ -13,7 +13,7 @@ MPG.NestedModel = Backbone.Model.extend({
 			if (o.type === MPG.association.HASMANY) {
 				cls = MPG.ClassMgr.get(o.model);
 				coll = this[o.key] = new cls();
-				coll[o.reverseKey] = this;
+				coll[o.foreignKey] = this;
 				
 				if (data[o.associationKey]) {
 					this[o.key].reset(data[o.associationKey]);

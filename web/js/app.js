@@ -2,53 +2,51 @@
  * MPG namespace
  */
 
-var MPG = {
-	view: {},
-	model: {},
-	collection: {}
-};
+var MPG = {};
 
+MPG.view = {};
+MPG.model = {};
+MPG.collection = {};
 MPG.BLANK_IMAGE = '../web/img/blank.gif';
-
 MPG.emptyFn = function() {};
 
 MPG.AppRouter = Backbone.Router.extend({
     routes:{
         '': 'home',
-        'groups/:id': 'groupDetails'
+        'groups/:id': 'groupDetails',
+        'user/profile': 'userProfile'
     },
 
     initialize:function () {
-		this.user = new MPG.model.User(MPG.Bootstrap.User, {parse: true});
-		this.groups = this.user.groups;
-		
-		this.appView = new MPG.AppLayout();
-		this.navigateView = new MPG.view.GroupList({collection: this.groups});
-		
-		$('.navigation', this.appView.el).html(this.navigateView.render().el);
-		
-		/*
-    	 * Todo bootstrap
-    	 */
-		// this.groups.fetch();
+        this.user = new MPG.model.User(MPG.Bootstrap.User, {parse: true});
+        this.groups = this.user.groups;
+        
+        this.appView = new MPG.AppLayout({model : this.user});
+        this.mainEl = $('.main-content', this.appView.el);
     },
     
     home: function() {
-    	$('.main-content', this.appView.el).html('Home Page');
+        this.mainEl.html('Home Page');
     },
     
     groupDetails: function(id) {
-    	this.group = this.groups.get(id);
-    	
-    	if (!this.group) {
-    		alert('erro');
-    		return;
-    	}
-    	
-    	var groupView = new MPG.view.Group({model: this.group});
-    	$('.main-content', this.appView.el).html(groupView.render().el);
-    	
-		this.group.activities.fetch();
+        var groups = this.user.groups,
+            activeGroup = groups.get(id);
+        
+        if (!activeGroup) {
+            alert('erro');
+            return;
+        }
+        
+        var groupView = new MPG.view.Group({model: activeGroup});
+        this.mainEl.html(groupView.render().el);
+        
+        activeGroup.activities.fetch();
+    },
+    
+    userProfile: function() {
+        var userView = new MPG.view.User({model: this.user});
+       this.mainEl.html(userView.render().el);
     }
 });
-
+    

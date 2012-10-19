@@ -1,11 +1,26 @@
+/*global MPG */
 MPG.model.User = MPG.NestedModel.extend({
 	defaults: {
 		id : 0,
 		name : '',
 		surname : '',
-		nickname: '',
+		displayname: '',
 		username : '',
 		status : ''
+	},
+	
+	validation: {
+	    username: {
+	        required: true
+	    },
+	    
+	    surname: {
+            required: true
+        },
+        
+        displayname: {
+            required: true
+        }
 	},
 	
 	associations: [{
@@ -13,12 +28,11 @@ MPG.model.User = MPG.NestedModel.extend({
 		model : 'GroupCollection',
 		key : 'groups',
 		associationKey : 'groupList',
-		reverseKey : 'user'
+		foreignKey : 'user'
 	}],
 	
 	parse: function(response) {
 		MPG.NestedModel.prototype.parse.apply(this, arguments);
-		
 		response.id = parseInt(response.id, 10);
 		return response;
 	}

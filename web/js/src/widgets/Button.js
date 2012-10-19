@@ -43,6 +43,7 @@ MPG.Button = Backbone.View.extend({
 		}));
 		
 		this.$el.addClass(this.cls);
+		this.rendered = true;
 		
 		return this;
 	},
@@ -87,5 +88,14 @@ MPG.Button = Backbone.View.extend({
 //other methods
 	restoreClick: function() {
 		this.ignoreClick = false;
-	}
+	},
+	
+//public
+    setText: function(text) {
+        this.text = text;
+        if (this.rendered) {
+            $('button', this.el).html(this.text);
+        }
+        
+    }
 });

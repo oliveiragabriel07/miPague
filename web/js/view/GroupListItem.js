@@ -1,6 +1,8 @@
 MPG.view.GroupListItem = Backbone.View.extend({
 	tagName: 'li',
 	
+	className: 'group-list-item',
+	
 	template: JST['group/listitem'],
 	
     render: function () {

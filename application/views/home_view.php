@@ -1,3 +1,4 @@
+<?php header('Content-type: text/html; charset=utf-8'); ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -6,7 +7,8 @@
 
 	<!--  styles -->
 	<link rel="stylesheet" type="text/css" href="../web/css/style.css" />
-	<link rel="stylesheet" type="text/css" href="../web/css/button.css" />	
+	<link rel="stylesheet" type="text/css" href="../web/css/button.css" />
+	<link rel="stylesheet" type="text/css" href="../web/lib/bootstrap/css/bootstrap.css" />	
 
 	<!-- lib -->
 	<script type="text/javascript" src="../web/lib/jquery/jquery.js"></script>
@@ -14,6 +16,8 @@
 	<script type="text/javascript" src="../web/lib/jquery/jquery.validate.js"></script>
 	<script type="text/javascript" src="../web/lib/underscore/underscore.js"></script>
 	<script type="text/javascript" src="../web/lib/backbone/backbone.js"></script>
+	<script type="text/javascript" src="../web/lib/backbone/backbone-validation.js"></script>
+	<script type="text/javascript" src="../web/lib/bootstrap/js/bootstrap.js"></script>
 	<script type="text/javascript" src="../web/lib/Array.js"></script>
 	<script type="text/javascript" src="../web/lib/date.js"></script>
 	
@@ -24,6 +28,7 @@
 	<script type="text/javascript" src="../web/js/src/NestedModel.js"></script>
 	<script type="text/javascript" src="../web/js/src/widgets/Button.js"></script>
 	<script type="text/javascript" src="../web/js/src/widgets/Menu.js"></script>
+	<script type="text/javascript" src="../web/js/src/widgets/Editable.js"></script>
 	<script type="text/javascript" src="../web/js/util/Format.js"></script>
 	<script type="text/javascript" src="../web/js/model/GroupModel.js"></script>
 	<script type="text/javascript" src="../web/js/model/UserModel.js"></script>
@@ -35,6 +40,7 @@
 	<script type="text/javascript" src="../web/js/view/GroupListItem.js"></script>
 	<script type="text/javascript" src="../web/js/view/GroupList.js"></script>
 	<script type="text/javascript" src="../web/js/view/Group.js"></script>
+	<script type="text/javascript" src="../web/js/view/User.js"></script>
 	<script type="text/javascript" src="../web/js/view/ActivityList.js"></script>
 	<script type="text/javascript" src="../web/js/view/ActivityListItem.js"></script>
 	<script type="text/javascript" src="../web/js/main.js"></script>
