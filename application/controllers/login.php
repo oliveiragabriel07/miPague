@@ -12,7 +12,7 @@ class Login extends CI_Controller {
 	function index() {
 		//verifica se usuario esta logado
 		if ($this->user->isLogged()) {
-			redirect('');
+			redirect('user');
 		} else {
 			$this->load->view('login_view');			
 		}

@@ -51,19 +51,19 @@ body {
 }
 
 .body {
-	display: inline-block;
+	padding-top: 15px;
 }
 
-.body .navigation,
-.body .content {
-	float: left;
-	margin-top: 15px;	
-} 
-
 .body .navigation {
+	float: left;
 	width: 200px;
 	padding: 0 10px;
 }
+
+.body .content {
+	margin-left: 220px;
+}
+
 
 .mpg-header {
 	display: inline-block;
@@ -95,4 +95,9 @@ body {
 
 .mpg-hide-visibility {
 	visibility: hidden;
+}
+
+
+.editfield {
+	display: inline-block;
 }

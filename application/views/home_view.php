@@ -7,7 +7,6 @@
 
 	<!--  styles -->
 	<link rel="stylesheet" type="text/css" href="../web/css/style.css" />
-	<link rel="stylesheet" type="text/css" href="../web/css/button.css" />
 	<link rel="stylesheet" type="text/css" href="../web/lib/bootstrap/css/bootstrap.css" />	
 
 	<!-- lib -->
@@ -26,7 +25,6 @@
 	<script type="text/javascript" src="../web/js/jst.js"></script>
 	<script type="text/javascript" src="../web/js/src/ClassMgr.js"></script>
 	<script type="text/javascript" src="../web/js/src/NestedModel.js"></script>
-	<script type="text/javascript" src="../web/js/src/widgets/Button.js"></script>
 	<script type="text/javascript" src="../web/js/src/widgets/Menu.js"></script>
 	<script type="text/javascript" src="../web/js/src/widgets/Editable.js"></script>
 	<script type="text/javascript" src="../web/js/util/Format.js"></script>

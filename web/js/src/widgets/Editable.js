@@ -34,6 +34,7 @@
                 $form = $this.parent();
                 $form.append(bbar);
                 $this.editing = true;
+                $this.tooltip('disable');
                 toggleState();  
             }
             
@@ -48,6 +49,7 @@
                 bbar.remove('', true);
                 $this.unwrap();
                 $this.editing = false;
+                $this.tooltip('enable');
                 toggleState();                  
             }
             
@@ -57,9 +59,7 @@
             }
 
             /* show tooltip */
-            if (settings.tooltip) {
-                $(this).attr('title', settings.tooltip);
-            }
+            $this.tooltip({title: settings.tooltip});
             
             $(this).on(settings.event, function(e) {
                 e.preventDefault();
@@ -69,12 +69,12 @@
             
             // create buttons
             bbar = $('<div class="editable-buttons-wrapper">');
-            btnSave = $('<button type="submit">')
+            btnSave = $('<button class="btn btn-primary" type="submit">')
                 .text(settings.save)
                 .on('click.editable', function(e) {
                     afterEdit(e, 'save');
                 });
-            btnCancel = $('<button type="button">')
+            btnCancel = $('<button class="btn" type="button">')
                 .text(settings.cancel)
                 .on('click.editable', function(e) {
                     afterEdit(e, 'cancel');
@@ -95,6 +95,7 @@
         event      : 'click.editable',
         onblur     : 'cancel',
         callback: function() {},
+        tooltip: 'clique para editar',
         save : 'Salvar',
         cancel: 'Cancelar'
     };

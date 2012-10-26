@@ -111,7 +111,7 @@ var JST = {
 	].join('')),
 	
 	'user/profile' : _.template([
-	    '<div class="mpg-editfield editfield">',
+	    '<div class="editfield">',
 	       '<div class="view"><%= displayname%></div>',
 	       '<div class="edit">',
 	           '<input type="text" name="name" value="<%= name%>" />',

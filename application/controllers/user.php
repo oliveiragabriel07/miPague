@@ -1,6 +1,6 @@
 <?php
 
-class Home extends CI_Controller {
+class User extends CI_Controller {
 	function __construct() {
 		parent::__construct();
 		
@@ -15,6 +15,10 @@ class Home extends CI_Controller {
 		$data['user'] = $user;
 		
 		$this->load->view('home_view', $data);
+	}
+	
+	function updateUser() {
+		
 	}
 }
 
