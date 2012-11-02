@@ -2,37 +2,142 @@
 
 include 'application/dtos/ActivityDTO.php';
 
-Class Activity_Model extends CI_Model {
+class Activity_model extends CI_Model {
+	
+	const TABLE_NAME = 'T_ACTIVITY'; 
+	
+	private $id;
+	private $group_id;
+	private $activity_type; //TODO remove
+	private $value;
+	private $date;
+	private $desc;
+	
+	/**
+	 * @return the $id
+	 */
+	public function getId() {
+		return $this->id;
+	}
+
+	/**
+	 * @return the $groupId
+	 */
+	public function getGroupId() {
+		return $this->group_id;
+	}
+
+	/**
+	 * @return the $activityType
+	 */
+	public function getActivityType() {
+		return $this->activity_type;
+	}
+
+	/**
+	 * @return the $value
+	 */
+	public function getValue() {
+		return $this->value;
+	}
+
+	/**
+	 * @return the $date
+	 */
+	public function getDate() {
+		return $this->date;
+	}
+
+	/**
+	 * @return the $desc
+	 */
+	public function getDesc() {
+		return $this->desc;
+	}
+
+	/**
+	 * @param field_type $id
+	 */
+	public function setId($id) {
+		$this->id = $id;
+	}
+
+	/**
+	 * @param field_type $group_id
+	 */
+	public function setGroupId($group_id) {
+		$this->group_id = $group_id;
+	}
+
+	/**
+	 * @param field_type $activityType
+	 */
+	public function setActivityType($activity_type) {
+		$this->activity_type = $activity_type;
+	}
+
+	/**
+	 * @param field_type $value
+	 */
+	public function setValue($value) {
+		$this->value = $value;
+	}
+
+	/**
+	 * @param field_type $date
+	 */
+	public function setDate($date) {
+		$this->date = $date;
+	}
+
+	/**
+	 * @param field_type $desc
+	 */
+	public function setDesc($desc) {
+		$this->desc = $desc;
+	}
+
+	/**
+	 * Adds the activity instance to the db.
+	 * Sets the $id from the db after insertion 
+	 */
+	function add() {
+		$this->db->insert(self::TABLE_NAME, get_object_vars($this));
+		
+		// sets the id as the last inserted id on the database
+		$this->id = $this->db->insert_id();
+	}
+	
 	function getGroupActivity($groupId) {
 		$query = $this->db->query(
-			"SELECT A.ID AS ACTIVITY_ID, A.DESC, A.VALUE, A.DATE, A.ACTIVITY_TYPE, UFROM.NAME AS FROM_NAME, UTO.NAME AS TO_NAME, '' AS USERLIST
-			FROM T_ACTIVITY AS A
-			INNER JOIN (
+				"SELECT A.ID AS ACTIVITY_ID, A.DESC, A.VALUE, A.DATE, A.ACTIVITY_TYPE, UFROM.NAME AS FROM_NAME, UTO.NAME AS TO_NAME, '' AS USERLIST
+				FROM T_ACTIVITY AS A
+				INNER JOIN (
 				T_USER AS UFROM
 				INNER JOIN (
-					T_REPAYMENT AS P
-					INNER JOIN T_USER AS UTO ON UTO.ID = P.TO_ID
-				) ON UFROM.ID = P.FROM_ID
-			) ON A.ID = P.ACTIVITY_ID
-			WHERE A.GROUP_ID = $groupId
-			UNION
-			SELECT A.ID AS ACTIVITY_ID, A.DESC, A.VALUE, A.DATE, A.ACTIVITY_TYPE, '' AS FROM_NAME, '' AS TO_NAME, GROUP_CONCAT( DISTINCT U.NAME ) AS USERLIST
-			FROM T_ACTIVITY AS A
-			INNER JOIN (
+				T_REPAYMENT AS P
+				INNER JOIN T_USER AS UTO ON UTO.ID = P.TO_ID
+		) ON UFROM.ID = P.FROM_ID
+		) ON A.ID = P.ACTIVITY_ID
+				WHERE A.GROUP_ID = $groupId
+				UNION
+				SELECT A.ID AS ACTIVITY_ID, A.DESC, A.VALUE, A.DATE, A.ACTIVITY_TYPE, '' AS FROM_NAME, '' AS TO_NAME, GROUP_CONCAT( DISTINCT U.NAME ) AS USERLIST
+				FROM T_ACTIVITY AS A
+				INNER JOIN (
 				T_EXPENSE AS X
 				INNER JOIN T_USER AS U ON X.USER_ID = U.ID
-			) ON A.ID = X.ACTIVITY_ID
-			WHERE A.GROUP_ID = $groupId
-			GROUP BY ACTIVITY_ID
-			ORDER BY DATE DESC
-			LIMIT 0 , 30"
+		) ON A.ID = X.ACTIVITY_ID
+				WHERE A.GROUP_ID = $groupId
+				GROUP BY ACTIVITY_ID
+				ORDER BY DATE DESC
+				LIMIT 0 , 30"
 		);
-		
+	
 		$activityList = array();
 		foreach ($query->result() as $row) {
 			$activityList[] = $this->copyActivity($row);
 		}
-		
+	
 		return $activityList;
 	}
 
