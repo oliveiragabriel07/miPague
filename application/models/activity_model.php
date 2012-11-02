@@ -1,25 +1,51 @@
 <?php 
 
 include 'application/dtos/ActivityDTO.php';
+require_once 'application/models/abstract_model.php';
 
-class Activity_model extends CI_Model {
+class Activity_model extends Abstract_model {
 	
 	const TABLE_NAME = 'T_ACTIVITY'; 
 	
-	private $id;
 	private $group_id;
 	private $activity_type; //TODO remove
 	private $value;
 	private $date;
 	private $desc;
 	
-	/**
-	 * @return the $id
-	 */
-	public function getId() {
-		return $this->id;
+	function __construct() {
+		parent::__construct($this);
 	}
-
+	
+	/**
+	 * (non-PHPdoc)
+	 * @see Abstract_model::parseQueryResult()
+	 */
+	protected function parseQueryResult($result) {
+		$this->group_id = $result->GROUP_ID;
+		$this->activity_type = $result->ACTIVITY_TYPE;
+		$this->value = $result->VALUE;
+		$this->date = $result->DATE;
+		$this->desc = $result->DESC;
+		return $this;
+	}
+	
+	/**
+	 * (non-PHPdoc)
+	 * @see Abstract_model::getTableName()
+	 */
+	protected function getTableName() {
+		return self::TABLE_NAME;
+	}
+	
+	/**
+	 * (non-PHPdoc)
+	 * @see Abstract_model::getObjectAsArray()
+	 */
+	protected function getObjectAsArray() {
+		return get_object_vars($this);
+	}
+	
 	/**
 	 * @return the $groupId
 	 */
@@ -53,13 +79,6 @@ class Activity_model extends CI_Model {
 	 */
 	public function getDesc() {
 		return $this->desc;
-	}
-
-	/**
-	 * @param field_type $id
-	 */
-	public function setId($id) {
-		$this->id = $id;
 	}
 
 	/**
@@ -97,17 +116,6 @@ class Activity_model extends CI_Model {
 		$this->desc = $desc;
 	}
 
-	/**
-	 * Adds the activity instance to the db.
-	 * Sets the $id from the db after insertion 
-	 */
-	function add() {
-		$this->db->insert(self::TABLE_NAME, get_object_vars($this));
-		
-		// sets the id as the last inserted id on the database
-		$this->id = $this->db->insert_id();
-	}
-	
 	function getGroupActivity($groupId) {
 		$query = $this->db->query(
 				"SELECT A.ID AS ACTIVITY_ID, A.DESC, A.VALUE, A.DATE, A.ACTIVITY_TYPE, UFROM.NAME AS FROM_NAME, UTO.NAME AS TO_NAME, '' AS USERLIST

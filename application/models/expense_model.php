@@ -1,9 +1,10 @@
 <?php
 
-class Expense_model extends CI_Model {
+require_once 'application/models/abstract_model.php';
+
+class Expense_model extends Abstract_model {
 	const TABLE_NAME = 'T_EXPENSE'; 
 	
-	private $id;
 	private $activity_id;
 	private $user_id;
 	private $value;
@@ -13,17 +14,30 @@ class Expense_model extends CI_Model {
 	}
 	
 	/**
-	 * @return the $id
+	 * (non-PHPdoc)
+	 * @see Abstract_model::getTableName()
 	 */
-	public function getId() {
-		return $this->id;
+	protected function getTableName() {
+		return self::TABLE_NAME;
 	}
-
+	
 	/**
-	 * @param field_type $id
+	 * (non-PHPdoc)
+	 * @see Abstract_model::getObjectAsArray()
 	 */
-	public function setId($id) {
-		$this->id = $id;
+	protected function getObjectAsArray() {
+		return get_object_vars($this);
+	}
+	
+	/**
+	 * (non-PHPdoc)
+	 * @see Abstract_model::parseQueryResult()
+	 */
+	protected function parseQueryResult($result) {
+		$this->activity_id = $result->ACTIVITY_ID;
+		$this->user_id = $result->USER_ID;
+		$this->value = $result->VALUE;
+		return $this;
 	}
 
 	/**
@@ -66,13 +80,6 @@ class Expense_model extends CI_Model {
 	 */
 	public function setValue($value) {
 		$this->value = $value;
-	}
-
-	function add() {
-		$this->db->insert(self::TABLE_NAME, get_object_vars($this));
-		
-		// sets the id as the last inserted id on the database
-		$this->id = $this->db->insert_id();
 	}
 }
 ?>
