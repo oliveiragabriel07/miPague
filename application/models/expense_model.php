@@ -34,6 +34,7 @@ class Expense_model extends Abstract_model {
 	 * @see Abstract_model::parseQueryResult()
 	 */
 	protected function parseQueryResult($result) {
+		$this->id = $result->ID;
 		$this->activity_id = $result->ACTIVITY_ID;
 		$this->user_id = $result->USER_ID;
 		$this->value = $result->VALUE;

@@ -44,12 +44,15 @@ abstract class Abstract_model extends CI_Model {
 	/**
 	 * Adds the instance to the db.
 	 * Sets the $id from the db after insertion 
+	 * @return the object instance
 	 */
 	public function add() {
 		$this->db->insert($this->getTableName(), $this->getObjectAsArray());
 		
 		// sets the id as the last inserted id on the database
 		$this->id = $this->db->insert_id();
+		
+		return $this;
 	}
 	
 	/**
@@ -61,7 +64,6 @@ abstract class Abstract_model extends CI_Model {
 		$query = $this->db->select()->from($this->getTableName())->where('id', $id)->get();
 		if ($query->num_rows() == 1) {
 			$result = $query->row();
-			$this->id = $result->ID;
 			return $this->parseQueryResult($result);
 			
 		} else {

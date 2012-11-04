@@ -22,6 +22,7 @@ class Activity_model extends Abstract_model {
 	 * @see Abstract_model::parseQueryResult()
 	 */
 	protected function parseQueryResult($result) {
+		$this->id = $result->ID;
 		$this->group_id = $result->GROUP_ID;
 		$this->activity_type = $result->ACTIVITY_TYPE;
 		$this->value = $result->VALUE;

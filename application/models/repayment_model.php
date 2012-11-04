@@ -1,19 +1,49 @@
 <?php 
 
-class Repayment_model extends CI_Model {
+require_once 'application/models/abstract_model.php';
+
+class Repayment_model extends Abstract_model {
 	
 	const TABLE_NAME = 'T_REPAYMENT'; 
-	
-	// TODO add id;
 	
 	private $activity_id;
 	private $from_id;
 	private $to_id;
-	private $receipt;
-	
+	private $receipt; //TODO remove ?
+	private $value;
+
 	// TODO add status
-	// TODO add value
 	// TODO add pending_value
+	
+	/**
+	 * (non-PHPdoc)
+	 * @see Abstract_model::parseQueryResult()
+	 */
+	protected function parseQueryResult($result) {
+		$this->id = $result->ID;
+		$this->activity_id = $result->ACTIVITY_ID;
+		$this->from_id = $result->FROM_ID;
+		$this->to_id = $result->TO_ID;
+		$this->value = $result->VALUE;
+		$this->receipt = $result->RECEIPT;
+		return $this;
+	}
+	
+	/**
+	 * (non-PHPdoc)
+	 * @see Abstract_model::getTableName()
+	 */
+	protected function getTableName() {
+		return self::TABLE_NAME;
+	}
+	
+	/**
+	 * (non-PHPdoc)
+	 * @see Abstract_model::getObjectAsArray()
+	 */
+	protected function getObjectAsArray() {
+		return get_object_vars($this);
+	}
 	
 	/**
 	 * @return the $id
@@ -84,17 +114,20 @@ class Repayment_model extends CI_Model {
 	public function setReceipt($receipt) {
 		$this->receipt = $receipt;
 	}
+	/**
+	 * @return the $value
+	 */
+	public function getValue() {
+		return $this->value;
+	}
 
 	/**
-	 * Adds the repayment instance to the db.
-	 * Sets the $id from the db after insertion 
+	 * @param field_type $value
 	 */
-	public function add() {
-		$this->db->insert(self::TABLE_NAME, get_object_vars($this));
-		
-		// sets the id as the last inserted id on the database
-		$this->id = $this->db->insert_id();
+	public function setValue($value) {
+		$this->value = $value;
 	}
+
 }
 
 ?>
