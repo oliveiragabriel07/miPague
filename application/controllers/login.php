@@ -42,6 +42,13 @@ class Login extends CI_Controller {
 		$this->user->endSession();
 		redirect('login');
 	}
+	
+	function getUser() {
+		Lumine_Log::setLevel(3);
+		$user = new User();
+		echo $user->find();
+// 		echo ActivityModel::getInstance()->get("id", "1");
+	}
 }
 
 ?>

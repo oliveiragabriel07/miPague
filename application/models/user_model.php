@@ -197,19 +197,16 @@ Class User_model extends Abstract_model {
 	}
 	
 	function validate($username, $password) {
-		$this->db->where('USERNAME', $username);
-		$this->db->where('PASSWORD', MD5($password));
+		$user = new User();
+		$user->username = $username;
+		$user->password = MD5($password);
 		
-		$query = $this->db->get('T_USER');
-		
-		if ($query->num_rows() == 1) {
-			$row = $query->first_row();
-			$this->startSession($row);
-			
+		if($user->find() == 1) {
 			return true;
 		}
 		
 		return false;
+		
 	}
 	
 	function isLogged() {

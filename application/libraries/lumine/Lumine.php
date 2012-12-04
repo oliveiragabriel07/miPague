@@ -96,6 +96,7 @@ abstract class Lumine {
 
         foreach ($args as $classname) {
             $filename = $path . $classname . '.php';
+            
             if (file_exists($filename)) {
                 require_once $filename;
             }
