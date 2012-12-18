@@ -1,6 +1,6 @@
 <?php
 
-class User extends Lumine_Base {
+class UserModel extends Lumine_Base {
 
 	public $id;
 	public $name;
@@ -13,7 +13,7 @@ class User extends Lumine_Base {
 	public $expenses = array();
 	public $repaymentTo = array();
 	public $repaymentFrom = array();
-	public $usergroup = array();
+	public $groups = array();
 
 	protected function _initialize() {
 		$this->metadata()->setTablename('t_user');
@@ -30,10 +30,10 @@ class User extends Lumine_Base {
 		$this->metadata()->addField('password', 'PASSWORD', 'varchar', 100, array('notnull' => true));
 		$this->metadata()->addField('photo', 'PHOTO', 'blob', 65535, array());
 
-		$this->metadata()->addRelation('expenses', Lumine_Metadata::ONE_TO_MANY, 'Expense', 'user', null, null, null);
-		$this->metadata()->addRelation('repaymentTo', Lumine_Metadata::ONE_TO_MANY, 'Repayment', 'to', null, null, null);
-		$this->metadata()->addRelation('repaymentFrom', Lumine_Metadata::ONE_TO_MANY, 'Repayment', 'from', null, null, null);
-		$this->metadata()->addRelation('usergroup', Lumine_Metadata::ONE_TO_MANY, 'UserGroup', 'user', null, null, null);
+		$this->metadata()->addRelation('expenses', Lumine_Metadata::ONE_TO_MANY, 'ExpenseModel', 'user', null, null, null);
+		$this->metadata()->addRelation('repaymentTo', Lumine_Metadata::ONE_TO_MANY, 'RepaymentModel', 'to', null, null, null);
+		$this->metadata()->addRelation('repaymentFrom', Lumine_Metadata::ONE_TO_MANY, 'RepaymentModel', 'from', null, null, null);
+		$this->metadata()->addRelation('groups', Lumine_Metadata::MANY_TO_MANY, 'GroupModel', 'id', 't_user_group', 'USER_ID', null);
 	}
-
+	
 }

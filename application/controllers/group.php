@@ -1,20 +1,19 @@
 <?php
- 
-class Group extends CI_Controller {
-	function __construct() {
-		parent::__construct();
-		
-		$this->load->model('User_model', 'user');
-		$this->load->model('Group_model', 'group');
-		$this->load->model('Activity_model', 'activity');
-		if(!$this->user->isLogged()) {
-			redirect('login');
-		}
-	}
+require_once 'application/dtos/GroupDTO.php';
+class Group extends Lock_Controller {
 	
 	function getList() {
-		$userId = $this->user->getId();
-		$groupList = $this->group->getUserGroupList($userId);
+		$group = new GroupModel();
+		$user = new UserModel();
+		$user->id = $this->getSessionId();
+		$group->join($user);
+		$group->selectAs();
+		$group->find();
+		
+		$groupList = array();
+		while($group->fetch()) {
+			$groupList[] = new GroupDTO($group);
+		}
 		
 		echo json_encode($groupList);
 	}

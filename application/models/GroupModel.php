@@ -1,12 +1,12 @@
 <?php
 
-class Group extends Lumine_Base {
+class GroupModel extends Lumine_Base {
 
 	public $id;
 	public $name;
 	public $class;
 	public $activity = array();
-	public $usergroup = array();
+	public $users = array();
 
 	protected function _initialize() {
 		$this->metadata()->setTablename('t_group');
@@ -18,8 +18,8 @@ class Group extends Lumine_Base {
 		$this->metadata()->addField('name', 'NAME', 'varchar', 45, array('notnull' => true));
 		$this->metadata()->addField('class', 'CLASS', 'varchar', 45, array('notnull' => true));
 
-		$this->metadata()->addRelation('activity', Lumine_Metadata::ONE_TO_MANY, 'Activity', 'groupId', null, null, null);
-		$this->metadata()->addRelation('usergroup', Lumine_Metadata::ONE_TO_MANY, 'UserGroup', 'groupId', null, null, null);
+		$this->metadata()->addRelation('activity', Lumine_Metadata::ONE_TO_MANY, 'ActivityModel', 'group', null, null, null);
+		$this->metadata()->addRelation('users', Lumine_Metadata::MANY_TO_MANY, 'UserModel', 'id', 't_user_group', 'GROUP_ID', null);
 	}
 
 }

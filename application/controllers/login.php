@@ -2,16 +2,11 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
     
-class Login extends CI_Controller {
-	function __construct() {
-		parent::__construct();
-		
-		$this->load->model('User_model', 'user');
-	}
+class Login extends MP_Controller {
 	
 	function index() {
 		//verifica se usuario esta logado
-		if ($this->user->isLogged()) {
+		if ($this->isLogged()) {
 			redirect('user');
 		} else {
 			$this->load->view('login_view');			
@@ -22,7 +17,7 @@ class Login extends CI_Controller {
 		$username = $this->input->post('username');
 		$password = $this->input->post('password');
 		
-		if ($this->user->validate($username, $password)) {
+		if ($this->validateCredentials($username, $password)) {
 			$data = array(
 				'success' => true,
 				'url' => ''
@@ -39,15 +34,23 @@ class Login extends CI_Controller {
 	}
 	
 	function logout() {
-		$this->user->endSession();
+		$this->session->unset_userdata('user_id');
+		$this->session->sess_destroy();
 		redirect('login');
 	}
 	
-	function getUser() {
-		Lumine_Log::setLevel(3);
-		$user = new User();
-		echo $user->find();
-// 		echo ActivityModel::getInstance()->get("id", "1");
+	private function validateCredentials($username, $password) {
+		$user = new UserModel();
+		$user->username = $username;
+		$user->password = MD5($password);
+		$user->find(true);
+		
+		if($user->numrows() == 1) {
+			$this->session->set_userdata('user_id', $user->id);
+			return true;
+		}
+		
+		return false;
 	}
 }
 
