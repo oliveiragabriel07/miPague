@@ -9,7 +9,7 @@ class GroupDTO {
 	function __construct(GroupModel $group) {
 		$this->id = $group->id;
 		$this->name = $group->name;
-		$this->cls = $group->class;
+		$this->cls = $group->cls;
 	}
 
 	function getId() {

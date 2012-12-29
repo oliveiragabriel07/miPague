@@ -39,6 +39,7 @@
 	<script type="text/javascript" src="../web/js/view/GroupList.js"></script>
 	<script type="text/javascript" src="../web/js/view/Group.js"></script>
 	<script type="text/javascript" src="../web/js/view/User.js"></script>
+	<script type="text/javascript" src="../web/js/view/BillForm.js"></script>
 	<script type="text/javascript" src="../web/js/view/ActivityList.js"></script>
 	<script type="text/javascript" src="../web/js/view/ActivityListItem.js"></script>
 	<script type="text/javascript" src="../web/js/main.js"></script>

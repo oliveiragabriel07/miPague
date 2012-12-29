@@ -107,7 +107,7 @@ var JST = {
 	
 	'group/home' : _.template([
 		'<button class="new-repayment">Reembolso</button>',
-		'<button class="new-expense">Despesa</button>',
+		'<button class="new-expense">Despesa</button>'
 	].join('')),
 	
 	'user/profile' : _.template([
@@ -127,5 +127,12 @@ var JST = {
 			'<li><% print((type === "repayment") ? (userFrom + " reembolsou " + userTo ) : userList.toList(", ", " e ") + " " + MPG.util.Format.plural(userList.length, "pagou", "pagaram") + " por " + description) %></li>',
 			'<li><%= value %></li>',
 		'</ul>'
+	].join('')),
+	
+	'bill/form': _.template([
+		'<form>',
+			'<p>Nova Conta</p>',
+			'<button type="submit" id="send">Enviar</button>',
+		'</form>'
 	].join(''))
 };

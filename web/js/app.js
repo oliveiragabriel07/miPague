@@ -14,7 +14,8 @@ MPG.AppRouter = Backbone.Router.extend({
     routes:{
         '': 'home',
         'groups/:id': 'groupDetails',
-        'user/profile': 'userProfile'
+        'user/profile': 'userProfile',
+        'bill/add': 'addBill'
     },
 
     initialize:function () {
@@ -47,6 +48,11 @@ MPG.AppRouter = Backbone.Router.extend({
     userProfile: function() {
         var userView = new MPG.view.User({model: this.user});
        this.mainEl.html(userView.render().el);
+    },
+    
+    addBill: function() {
+		var billView = new MPG.view.BillForm();
+    	this.mainEl.html(billView.render().el);
     }
 });
     

@@ -1,4 +1,6 @@
 <?php
+require_once 'GroupDTO.php';
+
 class UserDTO {
 	public $id;
 
@@ -15,78 +17,22 @@ class UserDTO {
 	public $groupList;
 
 	public $balanceList;
-
-	function __construct(UserModel $model) {
-		$this->id = $model->id;
-		$this->name = $model->name;
-		$this->surname = $model->surname;
-		$this->displayname = $model->displayname;
-		$this->username = $model->username;
-		$this->status = $model->status;
-	}
-
-	function getId() {
-		return $this->id;
-	}
-
-	function setId($id) {
-		$this->id = $id;
-	}
-
-	function getName() {
-		return $this->name;
-	}
-
-	function setName($name) {
-		$this->name = $name;
-	}
-
-	function getSurName() {
-		return $this->surname;
-	}
-
-	function setSurName($surname) {
-		$this->surname = $surname;
-	}
-
-	function getDisplayName() {
-		return $this->displayname;
-	}
-
-	function setDisplayName($displayname) {
-		$this->displayname = $displayname;
-	}
-
-	function getUserName() {
-		return $this->username;
-	}
-
-	function setUserName($username) {
-		$this->username = $username;
-	}
-
-	function getStatus() {
-		return $this->status;
-	}
-
-	function setStatus($status) {
-		$this->status = $status;
-	}
-
-	function getGroupList() {
-		return $this->groupList;
-	}
-
-	function setGroupList($groupList) {
-		$this->groupList = $groupList;
-	}
-
-	function getBalanceList() {
-		return $this->balanceList;
-	}
-
-	function setBalanceList($balanceList) {
-		$this->balanceList = $balanceList;
+	
+	public static function newInstance(UserModel $user) {
+		$dto = new UserDTO();
+		$dto->id = $user->id;
+		$dto->name = $user->name;
+		$dto->surname = $user->surname;
+		$dto->displayname = $user->displayname;
+		$dto->username = $user->username;
+		$dto->status = $user->status;
+		$dto->groupList = array();
+		
+		foreach ($user->groups as $group) {
+			$dto->groupList[] = new GroupDTO($group);
+		}
+		
+		return $dto;
 	}
 }
 
