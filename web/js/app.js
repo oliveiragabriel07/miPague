@@ -53,6 +53,7 @@ MPG.AppRouter = Backbone.Router.extend({
     addBill: function() {
 		var billView = new MPG.view.BillForm();
     	this.mainEl.html(billView.render().el);
+    	billView.enhanceElements();
     }
 });
     

@@ -49,7 +49,7 @@ class Expense extends Lock_Controller {
 		$this->fillPayAndReceiveLists($payList, $recList, $groupUsers, $shares, $expenseList);
 		$debits = $this->generateDebits($payList, $recList, $bill);
 		
-		// finally, updates balances
+		// finally, update balances
 		$this->calculateBalances($bill->group, $debits);
 		
 	}
@@ -237,13 +237,6 @@ class Expense extends Lock_Controller {
 		return $debit->save(); 
 	}
 	
-	/**
-	 * Creates the expense and saves on db
-	 * @param BillModel $bill
-	 * @param int $user
-	 * @param int $value
-	 * @return ExpenseModel the created expense
-	 */
 	 private function createExpense(BillModel $bill, $user, $value) {
 		$expense = new ExpenseModel();
 		$expense->bill = $bill->id;
@@ -252,11 +245,6 @@ class Expense extends Lock_Controller {
 		return $expense->save();
 	}
 
-	/**
-	 * Creates the bill and saves on the database
-	 * @param $data
-	 * @return BillModel the created model
-	 */
 	private function createBill($data) {
 		$bill = new BillModel();
 		$bill->date = $data['date'];

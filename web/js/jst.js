@@ -130,9 +130,38 @@ var JST = {
 	].join('')),
 	
 	'bill/form': _.template([
+		'<h3>Nova Conta</h3>',
 		'<form>',
-			'<p>Nova Conta</p>',
-			'<button type="submit" id="send">Enviar</button>',
-		'</form>'
+			'<input type="text" class="input-xlarge" placeholder="Descrição..." name="description" />',
+			
+			'<div class="control-group">',
+				'<div class="controls">',
+	                '<select id="group">',
+						'<% _.each(groups, function(group) { %>',
+							'<option><%= group.name %></option>',
+						'<% }); %>',
+	                '</select>',
+	           '</div>',
+           '</div>',
+			
+			'<input type="text" class="input-small" placeholder="Data" name="date" />',
+			
+			'<div class="dropdown">',
+                '<a href="#" class="btn dropdown-toggle" data-toggle="dropdown">',
+                    'Responsável ',
+                    '<span class="caret"></span>',
+                '</a>',
+                                
+                '<ul class="dropdown-menu" role="menu">',
+					'<% _.each(groupUsers, function(user) { %>',
+						'<li><a tabindex="-1" href="#"><%= user.displayName %></a></li>',
+					'<% }); %>',
+                '</ul>',
+			'</div>',
+			'<input type="hidden" name="user" />',
+			
+			'<input type="text" class="input-small" placeholder="Valor" name="value"/>',
+		'</form>',
+		'<button type="submit" class="btn btn-primary" id="send">Enviar</button>'
 	].join(''))
 };
