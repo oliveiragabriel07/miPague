@@ -58,7 +58,7 @@
 		},
 		
 		enhanceElements: function() {
-			this.$('select#group').selectBoxIt();
+			// this.$('select#group').selectBoxIt();
 		}
 	});
 

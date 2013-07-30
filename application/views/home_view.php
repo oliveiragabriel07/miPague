@@ -6,17 +6,13 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF8" />
 
 	<!--  styles -->
-	<link rel="stylesheet" type="text/css" href="../web/lib/jquery-ui/css/ui-lightness/jquery-ui-1.9.2.custom.css" />
 	<link rel="stylesheet" type="text/css" href="../web/lib/bootstrap/css/bootstrap.css" />
-	<link rel="stylesheet" type="text/css" href="../web/lib/jquery/css/jquery.selectboxit.css" />
 	<link rel="stylesheet" type="text/css" href="../web/css/style.css" />
 
 	<!-- lib -->
 	<script type="text/javascript" src="../web/lib/jquery/jquery-1.8.3.js"></script>
 	<script type="text/javascript" src="../web/lib/jquery/jquery.position.js"></script>
 	<script type="text/javascript" src="../web/lib/jquery/jquery.validate.js"></script>
-	<script type="text/javascript" src="../web/lib/jquery-ui/js/jquery-ui-1.9.2.custom.js"></script>
-	<script type="text/javascript" src="../web/lib/jquery/jquery.selectboxit.js"></script>
 	<script type="text/javascript" src="../web/lib/underscore/underscore.js"></script>
 	<script type="text/javascript" src="../web/lib/backbone/backbone.js"></script>
 	<script type="text/javascript" src="../web/lib/backbone/backbone-validation.js"></script>
