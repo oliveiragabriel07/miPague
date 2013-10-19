@@ -5,7 +5,7 @@
     MPG.AppLayout = Backbone.View.extend({
         tagName: 'div',
         
-        className: 'mpg-app',
+        className: 'app-layout',
         
         template: JST['app/layout'],
         
@@ -17,7 +17,7 @@
         
         render: function() {
             this.$el.html(this.template());
-            $('.section-header', this.el).html(this.headerView.render().el);
+            $('.header', this.el).html(this.headerView.render().el);
             $('.navigation', this.el).html(this.navigateView.render().el);
             $('body').html(this.el);
         }

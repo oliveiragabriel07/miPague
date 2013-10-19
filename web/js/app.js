@@ -23,7 +23,7 @@ MPG.AppRouter = Backbone.Router.extend({
         this.groups = this.user.groups;
         
         this.appView = new MPG.AppLayout({model : this.user});
-        this.mainEl = $('.main-content', this.appView.el);
+        this.mainEl = $('.content', this.appView.el);
     },
     
     home: function() {
